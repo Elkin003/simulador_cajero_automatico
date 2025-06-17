@@ -1,7 +1,5 @@
 package controller;
 
-
-
 public class Operacionescajero {
 
     public double depositar(double saldoActual, double monto) {

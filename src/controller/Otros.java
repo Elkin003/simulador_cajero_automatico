@@ -8,6 +8,7 @@ public class Otros {
 
     public String cambiarPin(String pinActual, String pinViejo, String pinNuevo) {
         if (pinActual.equals(pinViejo)) {
+            System.out.println("PIN cambiado correctamente");
             return pinNuevo;
         } else {
             System.out.println("El PIN actual no coincide.");
