@@ -6,7 +6,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Otros {
+public class CambiarPinyMostrarSaldo {
 
     private String path = "data";
     private String file_name = "Usuarios.dat";

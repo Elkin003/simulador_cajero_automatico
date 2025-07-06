@@ -4,7 +4,7 @@
  */
 package views;
 
-import controller.Otros;
+import controller.CambiarPinyMostrarSaldo;
 import javax.swing.JOptionPane;
 
 /**
@@ -52,8 +52,8 @@ public class CambiarPinView extends javax.swing.JDialog {
             return;
         }
 
-        Otros otros = new Otros();
-        String pinActualizado = otros.cambiarPin(usuario, pinActual, pinNuevo);
+        CambiarPinyMostrarSaldo pinCambiar = new CambiarPinyMostrarSaldo();
+        String pinActualizado = pinCambiar.cambiarPin(usuario, pinActual, pinNuevo);
 
         if (pinActualizado != null && pinActualizado.equals(pinNuevo)) {
             usuario[3] = pinNuevo;

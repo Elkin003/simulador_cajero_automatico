@@ -5,7 +5,7 @@
 package views;
 
 import java.awt.Color;
-import controller.Otros;
+import controller.CambiarPinyMostrarSaldo;
 
 /**
  *
@@ -40,7 +40,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     
     private void mostrarSaldo() {
         if (usuarioActual != null && txtMostrarSaldo != null) {
-            Otros otros = new Otros();
+            CambiarPinyMostrarSaldo otros = new CambiarPinyMostrarSaldo();
             double saldoActual = otros.obtenerSaldo(usuarioActual);
             String saldoTexto = Double.toString(saldoActual);
             txtMostrarSaldo.setText("$" + saldoTexto);
