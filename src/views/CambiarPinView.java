@@ -527,10 +527,8 @@ public class CambiarPinView extends javax.swing.JDialog {
 
     private void buttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarActionPerformed
         InterfazPrincipal interfaz = new InterfazPrincipal(usuario);
-        if (interfaz != null) {
             interfaz.setVisible(true);
             setVisible(false);
-        }
     }//GEN-LAST:event_buttonCancelarActionPerformed
 
     private void jButton33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton33ActionPerformed

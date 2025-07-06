@@ -4,6 +4,7 @@
  */
 package views;
 
+import controller.Autenticacion;
 import java.awt.Color;
 import controller.CambiarPinyMostrarSaldo;
 
@@ -12,23 +13,23 @@ import controller.CambiarPinyMostrarSaldo;
  * @author ASUS
  */
 public class InterfazPrincipal extends javax.swing.JFrame {
-    
+
     private String[] usuarioActual;
 
     /**
      * Creates new form InterfazPrincipal
      */
     public InterfazPrincipal() {
-        initComponents();        
+        initComponents();
     }
-    
+
     public InterfazPrincipal(String[] datosAutenticados) {
         initComponents();
-        usuarioActual = datosAutenticados;        
+        usuarioActual = datosAutenticados;
         mostrarNombreCliente();
         mostrarSaldo();
     }
-    
+
     private void mostrarNombreCliente() {
         if (usuarioActual != null && txtMostrarCliente != null) {
             String nombre = usuarioActual[0];
@@ -37,7 +38,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
             txtMostrarCliente.setText("Error al cargar nombre.");
         }
     }
-    
+
     private void mostrarSaldo() {
         if (usuarioActual != null && txtMostrarSaldo != null) {
             CambiarPinyMostrarSaldo otros = new CambiarPinyMostrarSaldo();
@@ -96,7 +97,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         jPanel11 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         jButton31 = new javax.swing.JButton();
-        jButton32 = new javax.swing.JButton();
+        buttonCancelar = new javax.swing.JButton();
         jButton33 = new javax.swing.JButton();
         button0 = new javax.swing.JButton();
         button7 = new javax.swing.JButton();
@@ -467,13 +468,13 @@ public class InterfazPrincipal extends javax.swing.JFrame {
             }
         });
 
-        jButton32.setBackground(java.awt.Color.orange);
-        jButton32.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
-        jButton32.setForeground(java.awt.Color.black);
-        jButton32.setText("Cancelar");
-        jButton32.addActionListener(new java.awt.event.ActionListener() {
+        buttonCancelar.setBackground(java.awt.Color.orange);
+        buttonCancelar.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
+        buttonCancelar.setForeground(java.awt.Color.black);
+        buttonCancelar.setText("Cancelar");
+        buttonCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton32ActionPerformed(evt);
+                buttonCancelarActionPerformed(evt);
             }
         });
 
@@ -618,7 +619,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
                 .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(16, 16, 16)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton32, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
+                    .addComponent(buttonCancelar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
                     .addComponent(jButton31, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(17, 17, 17))
@@ -636,7 +637,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
                                 .addGap(42, 42, 42)
                                 .addComponent(jButton31, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton32, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(buttonCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton33, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel11Layout.createSequentialGroup()
@@ -705,9 +706,11 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton31ActionPerformed
 
-    private void jButton32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton32ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton32ActionPerformed
+    private void buttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarActionPerformed
+        AutenticacionViews aut = new AutenticacionViews(null, false);
+        aut.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_buttonCancelarActionPerformed
 
     private void jButton33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton33ActionPerformed
         // TODO add your handling code here:
@@ -806,6 +809,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton button8;
     private javax.swing.JButton button9;
     private javax.swing.JButton buttonCambiarPin;
+    private javax.swing.JButton buttonCancelar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -818,7 +822,6 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton31;
-    private javax.swing.JButton jButton32;
     private javax.swing.JButton jButton33;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -836,9 +839,6 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel13;
-    private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
