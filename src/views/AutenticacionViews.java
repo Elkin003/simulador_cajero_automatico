@@ -5,6 +5,7 @@
 package views;
 
 import controller.Autenticacion;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -175,7 +176,7 @@ public class AutenticacionViews extends javax.swing.JDialog {
         );
 
         jPanel7.add(jPanel8);
-        jPanel8.setBounds(367, 8, 0, 316);
+        jPanel8.setBounds(367, 8, 10, 316);
 
         jButton18.setBackground(new java.awt.Color(255, 0, 0));
         jButton18.setForeground(new java.awt.Color(0, 0, 0));
@@ -239,7 +240,7 @@ public class AutenticacionViews extends javax.swing.JDialog {
         );
 
         jPanel3.add(jPanel4);
-        jPanel4.setBounds(6, 6, 682, 0);
+        jPanel4.setBounds(6, 6, 682, 85);
 
         jPanel5.setBackground(new java.awt.Color(51, 51, 51));
         jPanel5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -292,9 +293,9 @@ public class AutenticacionViews extends javax.swing.JDialog {
             }
         });
         jPanel6.add(txtnroCuenta);
-        txtnroCuenta.setBounds(170, 12, 271, 22);
+        txtnroCuenta.setBounds(170, 12, 271, 26);
         jPanel6.add(txtpin);
-        txtpin.setBounds(170, 40, 270, 22);
+        txtpin.setBounds(170, 40, 270, 26);
 
         jPanel5.add(jPanel6);
         jPanel6.setBounds(40, 10, 540, 232);
@@ -312,13 +313,20 @@ public class AutenticacionViews extends javax.swing.JDialog {
             }
         });
         getContentPane().add(jButtoningresar);
-        jButtoningresar.setBounds(100, 350, 75, 23);
-        getContentPane().add(txtnrocuenta);
-        txtnrocuenta.setBounds(40, 40, 370, 22);
-        getContentPane().add(txtpiningresado);
-        txtpiningresado.setBounds(40, 70, 370, 22);
+        jButtoningresar.setBounds(100, 350, 75, 27);
 
-        pack();
+        txtnrocuenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtnrocuentaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtnrocuenta);
+        txtnrocuenta.setBounds(40, 40, 370, 26);
+        getContentPane().add(txtpiningresado);
+        txtpiningresado.setBounds(50, 200, 370, 26);
+
+        setSize(new java.awt.Dimension(576, 539));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtnroCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnroCuentaActionPerformed
@@ -326,14 +334,26 @@ public class AutenticacionViews extends javax.swing.JDialog {
     }//GEN-LAST:event_txtnroCuentaActionPerformed
 
     private void buttonEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEnterActionPerformed
-        
+
     }//GEN-LAST:event_buttonEnterActionPerformed
 
     private void jButtoningresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtoningresarActionPerformed
-        // TODO add your handling code here:
         Autenticacion a = new Autenticacion();
-        a.autenticar(txtnrocuenta.getText(), txtpiningresado.getText());
+        String[] usuarioAutenticado = a.autenticar(txtnrocuenta.getText(), txtpiningresado.getText());
+        if (usuarioAutenticado != null) {
+            InterfazPrincipal interfaz =  new InterfazPrincipal(usuarioAutenticado);
+            interfaz.setVisible(true);
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Número de cuenta o PIN incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
+            txtnrocuenta.setText("");
+            txtpiningresado.setText("");
+        }
     }//GEN-LAST:event_jButtoningresarActionPerformed
+
+    private void txtnrocuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnrocuentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtnrocuentaActionPerformed
 
     /**
      * @param args the command line arguments
