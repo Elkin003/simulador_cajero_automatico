@@ -5,7 +5,6 @@
 package views;
 
 import controller.Autenticacion;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -67,7 +66,7 @@ public class AutenticacionViews extends javax.swing.JDialog {
         jPanel10 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jPanel11 = new javax.swing.JPanel();
-        jPanel18 = new javax.swing.JPanel();
+        jPanelregistrar = new javax.swing.JPanel();
         jLabel42 = new javax.swing.JLabel();
         jLabel44 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
@@ -78,6 +77,7 @@ public class AutenticacionViews extends javax.swing.JDialog {
         txtnrocuenta = new javax.swing.JTextField();
         txtpiningresado = new javax.swing.JTextField();
         jButtoningresar = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
         jPanel12 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
@@ -321,9 +321,9 @@ public class AutenticacionViews extends javax.swing.JDialog {
             }
         });
         jPanel6.add(txtnroCuenta);
-        txtnroCuenta.setBounds(170, 12, 271, 26);
+        txtnroCuenta.setBounds(170, 12, 271, 22);
         jPanel6.add(txtpin);
-        txtpin.setBounds(170, 40, 270, 26);
+        txtpin.setBounds(170, 40, 270, 22);
 
         jPanel5.add(jPanel6);
         jPanel6.setBounds(40, 10, 540, 232);
@@ -365,49 +365,49 @@ public class AutenticacionViews extends javax.swing.JDialog {
         jPanel11.setBackground(new java.awt.Color(51, 51, 51));
         jPanel11.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jPanel18.setBackground(new java.awt.Color(0, 255, 204));
-        jPanel18.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanel18.setLayout(null);
+        jPanelregistrar.setBackground(new java.awt.Color(0, 255, 204));
+        jPanelregistrar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanelregistrar.setLayout(null);
 
         jLabel42.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel42.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel18.add(jLabel42);
+        jPanelregistrar.add(jLabel42);
         jLabel42.setBounds(203, 8, 313, 0);
 
         jLabel44.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel44.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel18.add(jLabel44);
+        jPanelregistrar.add(jLabel44);
         jLabel44.setBounds(56, 14, 466, 0);
 
         jLabel45.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel45.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel18.add(jLabel45);
+        jPanelregistrar.add(jLabel45);
         jLabel45.setBounds(8, 20, 0, 0);
 
         jLabel46.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel46.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel18.add(jLabel46);
+        jPanelregistrar.add(jLabel46);
         jLabel46.setBounds(62, 20, 0, 0);
 
         jLabel47.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel47.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel18.add(jLabel47);
+        jPanelregistrar.add(jLabel47);
         jLabel47.setBounds(68, 20, 0, 0);
 
         jLabel10.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jLabel10.setForeground(java.awt.Color.black);
         jLabel10.setText("PIN");
-        jPanel18.add(jLabel10);
+        jPanelregistrar.add(jLabel10);
         jLabel10.setBounds(40, 110, 180, 30);
 
         jLabel11.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jLabel11.setForeground(java.awt.Color.black);
         jLabel11.setText("USUARIO");
-        jPanel18.add(jLabel11);
+        jPanelregistrar.add(jLabel11);
         jLabel11.setBounds(20, 20, 150, 30);
-        jPanel18.add(txtnrocuenta);
+        jPanelregistrar.add(txtnrocuenta);
         txtnrocuenta.setBounds(140, 60, 370, 22);
-        jPanel18.add(txtpiningresado);
+        jPanelregistrar.add(txtpiningresado);
         txtpiningresado.setBounds(140, 150, 370, 22);
 
         jButtoningresar.setText("ingresar");
@@ -416,8 +416,17 @@ public class AutenticacionViews extends javax.swing.JDialog {
                 jButtoningresarActionPerformed(evt);
             }
         });
-        jPanel18.add(jButtoningresar);
-        jButtoningresar.setBounds(240, 210, 75, 23);
+        jPanelregistrar.add(jButtoningresar);
+        jButtoningresar.setBounds(140, 200, 75, 23);
+
+        jButton7.setText("registrar");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        jPanelregistrar.add(jButton7);
+        jButton7.setBounds(310, 200, 74, 23);
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -425,14 +434,14 @@ public class AutenticacionViews extends javax.swing.JDialog {
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, 532, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanelregistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 532, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel11Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel18, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+                .addComponent(jPanelregistrar, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -705,18 +714,7 @@ public class AutenticacionViews extends javax.swing.JDialog {
         getContentPane().add(jPanel12);
         jPanel12.setBounds(0, 380, 640, 370);
 
-        txtnrocuenta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtnrocuentaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtnrocuenta);
-        txtnrocuenta.setBounds(40, 40, 370, 26);
-        getContentPane().add(txtpiningresado);
-        txtpiningresado.setBounds(50, 200, 370, 26);
-
-        setSize(new java.awt.Dimension(576, 539));
-        setLocationRelativeTo(null);
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtnroCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnroCuentaActionPerformed
@@ -724,21 +722,13 @@ public class AutenticacionViews extends javax.swing.JDialog {
     }//GEN-LAST:event_txtnroCuentaActionPerformed
 
     private void buttonEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEnterActionPerformed
-
+        
     }//GEN-LAST:event_buttonEnterActionPerformed
 
     private void jButtoningresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtoningresarActionPerformed
+        // TODO add your handling code here:
         Autenticacion a = new Autenticacion();
-        String[] usuarioAutenticado = a.autenticar(txtnrocuenta.getText(), txtpiningresado.getText());
-        if (usuarioAutenticado != null) {
-            InterfazPrincipal interfaz =  new InterfazPrincipal(usuarioAutenticado);
-            interfaz.setVisible(true);
-            dispose();
-        } else {
-            JOptionPane.showMessageDialog(null, "Número de cuenta o PIN incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
-            txtnrocuenta.setText("");
-            txtpiningresado.setText("");
-        }
+        a.autenticar(txtnrocuenta.getText(), txtpiningresado.getText());
     }//GEN-LAST:event_jButtoningresarActionPerformed
 
     private void jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton31ActionPerformed
@@ -794,6 +784,11 @@ public class AutenticacionViews extends javax.swing.JDialog {
     private void button3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_button3ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -869,6 +864,7 @@ public class AutenticacionViews extends javax.swing.JDialog {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButtoningresar;
     private javax.swing.JLabel jLabel1;
@@ -892,7 +888,6 @@ public class AutenticacionViews extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
-    private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -901,6 +896,7 @@ public class AutenticacionViews extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JPanel jPanelregistrar;
     private javax.swing.JTextField txtnroCuenta;
     private javax.swing.JTextField txtnrocuenta;
     private javax.swing.JTextField txtpin;
