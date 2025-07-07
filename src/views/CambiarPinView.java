@@ -28,7 +28,7 @@ public class CambiarPinView extends javax.swing.JDialog {
         usuario = usuarioActual;
     }
     
-    public void cambiarPINButton(){
+    public void cambiarPINButton(){                                             
         String pinActual = txtPinActual.getText();
         String pinNuevo = txtPinNuevo.getText();
         String pinConfirmado = txtPinConfirmado.getText();

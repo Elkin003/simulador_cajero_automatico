@@ -41,8 +41,8 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
     private void mostrarSaldo() {
         if (usuarioActual != null && txtMostrarSaldo != null) {
-            CambiarPinyMostrarSaldo otros = new CambiarPinyMostrarSaldo();
-            double saldoActual = otros.obtenerSaldo(usuarioActual);
+            CambiarPinyMostrarSaldo pinCambiar = new CambiarPinyMostrarSaldo();
+            double saldoActual = pinCambiar.obtenerSaldo(usuarioActual);
             String saldoTexto = Double.toString(saldoActual);
             txtMostrarSaldo.setText("$" + saldoTexto);
         } else if (txtMostrarSaldo != null) {
