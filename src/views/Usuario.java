@@ -76,7 +76,7 @@ public class Usuario extends javax.swing.JDialog {
         txttelefono = new javax.swing.JTextField();
         txtpin = new javax.swing.JTextField();
         txtnrocuenta = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        jButtongenerar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbltabla = new javax.swing.JTable();
@@ -118,7 +118,12 @@ public class Usuario extends javax.swing.JDialog {
             }
         });
 
-        jButton2.setText("Generara");
+        jButtongenerar.setText("Generar");
+        jButtongenerar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtongenerarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -150,7 +155,7 @@ public class Usuario extends javax.swing.JDialog {
                                             .addComponent(txtnrocuenta)))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGap(27, 27, 27)
-                                        .addComponent(jButton2)
+                                        .addComponent(jButtongenerar)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(txtpin, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(162, 162, 162))))))
@@ -176,7 +181,7 @@ public class Usuario extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(txtpin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
+                    .addComponent(jButtongenerar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -265,6 +270,14 @@ public class Usuario extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtclienteActionPerformed
 
+    private void jButtongenerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtongenerarActionPerformed
+        // TODO add your handling code here:
+          Autenticacion a = new Autenticacion();
+          String pinGenerado = a.generarPin();
+          txtpin.setText("");
+          txtpin.setText(pinGenerado);
+    }//GEN-LAST:event_jButtongenerarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -316,7 +329,7 @@ public class Usuario extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButtongenerar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

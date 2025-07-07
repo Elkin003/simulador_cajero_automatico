@@ -96,7 +96,7 @@ public class Autenticacion {
     }
 
     //generar pin
-    private String generarPin() {
+    public String generarPin() {
         Random r = new Random();
         return String.format("%06d", r.nextInt(1_000_000));
     }
