@@ -5,6 +5,7 @@
 package views;
 
 import controller.Autenticacion;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -321,9 +322,9 @@ public class AutenticacionViews extends javax.swing.JDialog {
             }
         });
         jPanel6.add(txtnroCuenta);
-        txtnroCuenta.setBounds(170, 12, 271, 22);
+        txtnroCuenta.setBounds(170, 12, 271, 26);
         jPanel6.add(txtpin);
-        txtpin.setBounds(170, 40, 270, 22);
+        txtpin.setBounds(170, 40, 270, 26);
 
         jPanel5.add(jPanel6);
         jPanel6.setBounds(40, 10, 540, 232);
@@ -406,9 +407,9 @@ public class AutenticacionViews extends javax.swing.JDialog {
         jPanelregistrar.add(jLabel11);
         jLabel11.setBounds(20, 20, 150, 30);
         jPanelregistrar.add(txtnrocuenta);
-        txtnrocuenta.setBounds(140, 60, 370, 22);
+        txtnrocuenta.setBounds(140, 60, 370, 26);
         jPanelregistrar.add(txtpiningresado);
-        txtpiningresado.setBounds(140, 150, 370, 22);
+        txtpiningresado.setBounds(140, 150, 370, 26);
 
         jButtoningresar.setText("ingresar");
         jButtoningresar.addActionListener(new java.awt.event.ActionListener() {
@@ -417,7 +418,7 @@ public class AutenticacionViews extends javax.swing.JDialog {
             }
         });
         jPanelregistrar.add(jButtoningresar);
-        jButtoningresar.setBounds(140, 200, 75, 23);
+        jButtoningresar.setBounds(140, 200, 75, 27);
 
         jButton7.setText("registrar");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
@@ -426,7 +427,7 @@ public class AutenticacionViews extends javax.swing.JDialog {
             }
         });
         jPanelregistrar.add(jButton7);
-        jButton7.setBounds(310, 200, 74, 23);
+        jButton7.setBounds(310, 200, 78, 27);
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -714,7 +715,8 @@ public class AutenticacionViews extends javax.swing.JDialog {
         getContentPane().add(jPanel12);
         jPanel12.setBounds(0, 380, 640, 370);
 
-        pack();
+        setSize(new java.awt.Dimension(654, 752));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtnroCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnroCuentaActionPerformed
@@ -722,13 +724,21 @@ public class AutenticacionViews extends javax.swing.JDialog {
     }//GEN-LAST:event_txtnroCuentaActionPerformed
 
     private void buttonEnterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEnterActionPerformed
-        
+
     }//GEN-LAST:event_buttonEnterActionPerformed
 
     private void jButtoningresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtoningresarActionPerformed
-        // TODO add your handling code here:
         Autenticacion a = new Autenticacion();
-        a.autenticar(txtnrocuenta.getText(), txtpiningresado.getText());
+        String[] usuarioAutenticado = a.autenticar(txtnrocuenta.getText(), txtpiningresado.getText());
+        if (usuarioAutenticado != null) {
+            InterfazPrincipal interfaz = new InterfazPrincipal(usuarioAutenticado);
+            interfaz.setVisible(true);
+            dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Número de cuenta o PIN incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
+            txtnrocuenta.setText("");
+            txtpiningresado.setText("");
+        }
     }//GEN-LAST:event_jButtoningresarActionPerformed
 
     private void jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton31ActionPerformed
@@ -736,9 +746,7 @@ public class AutenticacionViews extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton31ActionPerformed
 
     private void buttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarActionPerformed
-        AutenticacionViews aut = new AutenticacionViews(null, false);
-        aut.setVisible(true);
-        dispose();
+
     }//GEN-LAST:event_buttonCancelarActionPerformed
 
     private void jButton35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton35ActionPerformed
@@ -787,7 +795,7 @@ public class AutenticacionViews extends javax.swing.JDialog {
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_jButton7ActionPerformed
 
     /**

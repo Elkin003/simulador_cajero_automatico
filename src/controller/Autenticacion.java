@@ -29,8 +29,8 @@ public class Autenticacion {
     private String file_name = "Usuarios.dat";
 
     public boolean registrarUsuario(String cliente, String telefono, String pin,
-            String nroCuenta, String saldo) {
-        String data = cliente + "\t" + telefono + "\t" + nroCuenta + "\t" + pin + "\t" + saldo + "\n";
+            String nroCuenta) {
+        String data = cliente + "\t" + telefono + "\t" + nroCuenta + "\t" + pin + "\n";
         try {
             save(data, file_name);
             return true;
