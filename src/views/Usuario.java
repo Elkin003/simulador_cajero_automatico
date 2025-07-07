@@ -35,17 +35,17 @@ public class Usuario extends javax.swing.JDialog {
         txtcliente.setText("");
         txttelefono.setText("");
         txtpin.setText("");
-        txtnrocuenta.setText("");
+        txtnrocuentagenerado.setText("");
         cargarTablas();
     }
     
     
     private void guardar(){
         if (txtcliente.getText().isEmpty() || txttelefono.getText().isEmpty()
-                || txtpin.getText().isEmpty() || txtnrocuenta.getText().isEmpty()) {
+                || txtpin.getText().isEmpty() || txtnrocuentagenerado.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Faltan datos!", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            if (a.registrarUsuario(txtcliente.getText(), txttelefono.getText(), txtpin.getText(), txtnrocuenta.getText())) {
+            if (a.registrarUsuario(txtcliente.getText(), txttelefono.getText(), txtpin.getText(), txtnrocuentagenerado.getText())) {
                 JOptionPane.showMessageDialog(null, "Se a registrado correcta mente!", "Success", JOptionPane.INFORMATION_MESSAGE);
                 limpiar();
             } else {
@@ -75,8 +75,9 @@ public class Usuario extends javax.swing.JDialog {
         txtcliente = new javax.swing.JTextField();
         txttelefono = new javax.swing.JTextField();
         txtpin = new javax.swing.JTextField();
-        txtnrocuenta = new javax.swing.JTextField();
+        txtnrocuentagenerado = new javax.swing.JTextField();
         jButtongenerar = new javax.swing.JButton();
+        jButtongenerarnrocuenta = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbltabla = new javax.swing.JTable();
@@ -125,6 +126,13 @@ public class Usuario extends javax.swing.JDialog {
             }
         });
 
+        jButtongenerarnrocuenta.setText("Generar");
+        jButtongenerarnrocuenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtongenerarnrocuentaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -150,14 +158,16 @@ public class Usuario extends javax.swing.JDialog {
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txttelefono)
-                                            .addComponent(txtnrocuenta)))
+                                        .addComponent(txttelefono))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addGap(27, 27, 27)
-                                        .addComponent(jButtongenerar)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jButtongenerar)
+                                            .addComponent(jButtongenerarnrocuenta))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtpin, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtnrocuentagenerado)
+                                            .addComponent(txtpin, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE))
                                         .addGap(162, 162, 162))))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(90, 90, 90)
@@ -185,7 +195,8 @@ public class Usuario extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtnrocuenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtnrocuentagenerado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtongenerarnrocuenta))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(52, 52, 52))
@@ -278,6 +289,14 @@ public class Usuario extends javax.swing.JDialog {
           txtpin.setText(pinGenerado);
     }//GEN-LAST:event_jButtongenerarActionPerformed
 
+    private void jButtongenerarnrocuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtongenerarnrocuentaActionPerformed
+        // TODO add your handling code here:
+        Autenticacion a = new Autenticacion();
+        long nroCuentaGenerado = a.generarNroCuenta();
+        txtnrocuentagenerado.setText("");
+        txtnrocuentagenerado.setText(Long.toString(nroCuentaGenerado));
+    }//GEN-LAST:event_jButtongenerarnrocuentaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -330,6 +349,7 @@ public class Usuario extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtongenerar;
+    private javax.swing.JButton jButtongenerarnrocuenta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -342,7 +362,7 @@ public class Usuario extends javax.swing.JDialog {
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTable tbltabla;
     private javax.swing.JTextField txtcliente;
-    private javax.swing.JTextField txtnrocuenta;
+    private javax.swing.JTextField txtnrocuentagenerado;
     private javax.swing.JTextField txtpin;
     private javax.swing.JTextField txttelefono;
     // End of variables declaration//GEN-END:variables

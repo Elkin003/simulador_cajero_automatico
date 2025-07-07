@@ -101,6 +101,13 @@ public class Autenticacion {
         return String.format("%06d", r.nextInt(1_000_000));
     }
     
+    public long generarNroCuenta(){
+       Random r = new Random();
+    long min = 1000000000L;   
+    long max = 9999999999L;   
+    return  min + (long)(r.nextDouble() * (max - min + 1));
+    }
+    
     public String[] autenticar(String nroCuentaIngresado, String pinIngresado) {
     try {
         String[][] usuarios = listar();
