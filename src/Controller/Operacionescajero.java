@@ -23,7 +23,7 @@ public class Operacionescajero {
     CambiarPinyMostrarSaldo obSaldo = new CambiarPinyMostrarSaldo();
     
     
-    public boolean depositar (String [] usuarioAutenticado, double monto){
+    public double depositar (String [] usuarioAutenticado, double monto){
         if (usuarioAutenticado != null && monto > 0){
              double saldoActual = obSaldo.obtenerSaldo(usuarioAutenticado);
             double nuevoSaldo = saldoActual + monto;
@@ -31,32 +31,32 @@ public class Operacionescajero {
             if (exito) {
                 usuarioAutenticado[4] = String.valueOf(nuevoSaldo);
                 System.out.println("Depósito exitoso. Nuevo saldo: " + nuevoSaldo);
-                return true;
+                return nuevoSaldo;
                 
             } else {
                 System.out.println("Error al actualizar saldo en el archivo.");
             }
         }
-        return false;
+        return -1;
     }  
-     public boolean retirar(String[] usuarioAutenticado, double monto) {
+     public double retirar(String[] usuarioAutenticado, double monto) {
         if (usuarioAutenticado != null && monto > 0) {
             double saldoActual = obSaldo.obtenerSaldo(usuarioAutenticado);
             if (monto > saldoActual) {
                 System.out.println("Fondos insuficientes.");
-                return false;
+                return -1;
             }
             double nuevoSaldo = saldoActual - monto;
             boolean exito = actualizarSaldo(usuarioAutenticado[2], nuevoSaldo);
             if (exito) {
                 usuarioAutenticado[4] = String.valueOf(nuevoSaldo);
                 System.out.println("Retiro exitoso. Nuevo saldo: " + nuevoSaldo);
-                return true;
+                return nuevoSaldo;
             } else {
                 System.out.println("Error al actualizar saldo en el archivo.");
             }
         }
-        return false;
+        return -1;
     }
     public boolean actualizarSaldo(String nroCuenta, double nuevoSaldo) {
         try {

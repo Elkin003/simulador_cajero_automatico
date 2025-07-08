@@ -5,13 +5,18 @@
 package views;
 
 import Controller.Operacionescajero;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author asus
  */
 public class RetirosView extends javax.swing.JDialog {
+
     private String[] usuarioActual;
+    double montoNumero;
+    double saldoActualizado;
+    private Operacionescajero operaciones;
 
     /**
      * Creates new form RetirosView
@@ -20,10 +25,58 @@ public class RetirosView extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
     }
+
     public RetirosView(String[] datosAutenticados) {
         initComponents();
         usuarioActual = datosAutenticados;
-      
+        operaciones = new Operacionescajero();
+    }
+
+    private void botonRetirar() {
+        double saldoActual = Double.parseDouble(usuarioActual[4]);
+        if (usuarioActual == null) {
+            JOptionPane.showMessageDialog(null, "No hay datos de usuario cargados.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (txtmonto2.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos.", "Campos Vacíos", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        try {
+            montoNumero = Double.parseDouble(txtmonto2.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Por favor, ingrese solo números.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        if (montoNumero > saldoActual) {
+            JOptionPane.showMessageDialog(null, "Fondos insuficientes o error en el retiro.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        if (operaciones == null) {
+            operaciones = new Operacionescajero();
+        }
+        saldoActualizado = operaciones.retirar(usuarioActual, montoNumero);
+
+        if (saldoActualizado >= 0) {
+            JOptionPane.showMessageDialog(null, "Retiro realizado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+
+            String recibo = "********** RECIBO DE RETIRO **********\n"
+                    + "Usuario: " + usuarioActual[0] + "\n"
+                    + "Fecha: " + java.time.LocalDateTime.now() + "\n"
+                    + "Monto retirado: $" + montoNumero + "\n"
+                    + "Saldo actual: $" + saldoActualizado + "\n"
+                    + "***************************************";
+
+            JOptionPane.showMessageDialog(null, recibo, "Recibo de Operación", JOptionPane.INFORMATION_MESSAGE);
+
+            // Solo se cierra esta ventana
+            dispose(); // o setVisible(false);
+            InterfazPrincipal interfaz = new InterfazPrincipal(usuarioActual);
+            interfaz.setVisible(true);
+
+        }
+
+        txtmonto2.setText("");
     }
 
     /**
@@ -1282,7 +1335,7 @@ public class RetirosView extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonCambiarPinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCambiarPinActionPerformed
-        
+
     }//GEN-LAST:event_buttonCambiarPinActionPerformed
 
     private void jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton31ActionPerformed
@@ -1290,7 +1343,7 @@ public class RetirosView extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton31ActionPerformed
 
     private void buttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarActionPerformed
-     
+
     }//GEN-LAST:event_buttonCancelarActionPerformed
 
     private void jButton33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton33ActionPerformed
@@ -1339,9 +1392,6 @@ public class RetirosView extends javax.swing.JDialog {
 
     private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositarActionPerformed
         // TODO add your handling code here:
-        Operacionescajero depositar = new Operacionescajero();
-        double montoNumero = Double.parseDouble(txtmonto.getText());
-        depositar.depositar(usuarioActual, montoNumero);
     }//GEN-LAST:event_btnDepositarActionPerformed
 
     private void jButton32ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton32ActionPerformed
@@ -1398,9 +1448,7 @@ public class RetirosView extends javax.swing.JDialog {
 
     private void btnRetirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRetirarActionPerformed
         // TODO add your handling code here:
-        Operacionescajero retirar = new Operacionescajero();
-        double montoNumero = Double.parseDouble(txtmonto.getText());
-        retirar.retirar(usuarioActual, montoNumero);
+        botonRetirar();
     }//GEN-LAST:event_btnRetirarActionPerformed
 
     private void jButton35ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton35ActionPerformed
@@ -1458,7 +1506,7 @@ public class RetirosView extends javax.swing.JDialog {
     }//GEN-LAST:event_button29ActionPerformed
 
     private void txtmonto2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtmonto2ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txtmonto2ActionPerformed
 
     /**
@@ -1475,16 +1523,24 @@ public class RetirosView extends javax.swing.JDialog {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RetirosView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RetirosView.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RetirosView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RetirosView.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RetirosView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RetirosView.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RetirosView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RetirosView.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 

@@ -1,6 +1,7 @@
 package views;
 
 import Controller.Operacionescajero;
+import javax.swing.JOptionPane;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -13,6 +14,9 @@ import Controller.Operacionescajero;
 public class DepositosView extends javax.swing.JDialog {
 
     private String[] usuarioActual;
+    double montoNumero;
+    double saldoActualizado;
+    private Operacionescajero operaciones; 
 
     /**
      * Creates new form DepositosView
@@ -25,7 +29,53 @@ public class DepositosView extends javax.swing.JDialog {
     public DepositosView(String[] datosAutenticados) {
         initComponents();
         usuarioActual = datosAutenticados;
+        operaciones = new Operacionescajero();
 
+    }
+    private void botonDepositar(){
+        double saldoActual = Double.parseDouble(usuarioActual[4]);
+        if (usuarioActual == null) {
+            JOptionPane.showMessageDialog(null, "No hay datos de usuario cargados.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (txtmonto.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos.", "Campos Vacíos", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        try {
+            montoNumero = Double.parseDouble(txtmonto.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Por favor, ingrese solo números.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        if (montoNumero > saldoActual) {
+            JOptionPane.showMessageDialog(null, "Error en el retiro.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+        if (operaciones == null) {
+            operaciones = new Operacionescajero();
+        }
+        saldoActualizado = operaciones.retirar(usuarioActual, montoNumero);
+
+        if (saldoActualizado >= 0) {
+            JOptionPane.showMessageDialog(null, "Deposito realizado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+
+            String recibo = "---------- RECIBO DE DEPOSITO ----------\n"
+                    + "Usuario: " + usuarioActual[0] + "\n"
+                    + "Fecha: " + java.time.LocalDateTime.now() + "\n"
+                    + "Monto retirado: $" + montoNumero + "\n"
+                    + "Saldo actual: $" + saldoActualizado + "\n"
+                    + "***************************************";
+
+            JOptionPane.showMessageDialog(null, recibo, "Recibo de Operación", JOptionPane.INFORMATION_MESSAGE);
+
+            dispose(); 
+            InterfazPrincipal interfaz = new InterfazPrincipal(usuarioActual);
+            interfaz.setVisible(true);
+
+        }
+
+        txtmonto.setText("");
     }
 
     /**
@@ -509,6 +559,7 @@ public class DepositosView extends javax.swing.JDialog {
         Operacionescajero depositar = new Operacionescajero();
         double montoNumero = Double.parseDouble(txtmonto.getText());
         depositar.depositar(usuarioActual, montoNumero);
+        botonDepositar();
     }//GEN-LAST:event_btnDepositarActionPerformed
 
     /**
