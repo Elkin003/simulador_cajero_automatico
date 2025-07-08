@@ -183,7 +183,7 @@ public class CambiarPinView extends javax.swing.JDialog {
         jLabel7.setForeground(java.awt.Color.black);
         jLabel7.setText("Pin Actual:");
         jPanel18.add(jLabel7);
-        jLabel7.setBounds(110, 10, 120, 30);
+        jLabel7.setBounds(110, 20, 120, 30);
 
         buttonConfirmar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         buttonConfirmar.setText("Confirmar");
@@ -209,7 +209,7 @@ public class CambiarPinView extends javax.swing.JDialog {
             }
         });
         jPanel18.add(txtPinActual);
-        txtPinActual.setBounds(230, 30, 100, 30);
+        txtPinActual.setBounds(230, 40, 100, 30);
 
         jLabel6.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jLabel6.setForeground(java.awt.Color.black);
@@ -512,7 +512,7 @@ public class CambiarPinView extends javax.swing.JDialog {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );

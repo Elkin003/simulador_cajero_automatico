@@ -54,9 +54,9 @@ public class ModelotablasUsuarios extends AbstractTableModel {
     public String getColumnName(int column) {
         switch (column) {
             case 0:
-                return "CLiente";
+                return "Cliente";
             case 1:
-                return "Telefono";
+                return "Teléfono";
             case 2:
                 return "Nro Cuenta";
             case 3:

@@ -63,22 +63,6 @@ public class AutenticacionViews extends javax.swing.JDialog {
         jLabel8 = new javax.swing.JLabel();
         txtnroCuenta = new javax.swing.JTextField();
         txtpin = new javax.swing.JTextField();
-        jPanel9 = new javax.swing.JPanel();
-        jPanel10 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        jPanel11 = new javax.swing.JPanel();
-        jPanelregistrar = new javax.swing.JPanel();
-        jLabel42 = new javax.swing.JLabel();
-        jLabel44 = new javax.swing.JLabel();
-        jLabel45 = new javax.swing.JLabel();
-        jLabel46 = new javax.swing.JLabel();
-        jLabel47 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        txtnrocuenta = new javax.swing.JTextField();
-        txtpiningresado = new javax.swing.JTextField();
-        jButtoningresar = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
         jPanel12 = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
@@ -95,6 +79,22 @@ public class AutenticacionViews extends javax.swing.JDialog {
         button1 = new javax.swing.JButton();
         button2 = new javax.swing.JButton();
         button3 = new javax.swing.JButton();
+        jPanel9 = new javax.swing.JPanel();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jPanel11 = new javax.swing.JPanel();
+        jPanelregistrar = new javax.swing.JPanel();
+        jLabel42 = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
+        jLabel45 = new javax.swing.JLabel();
+        jLabel46 = new javax.swing.JLabel();
+        jLabel47 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        txtnrocuenta = new javax.swing.JTextField();
+        txtpiningresado = new javax.swing.JTextField();
+        jButtoningresar = new javax.swing.JButton();
+        jButtonregistrar = new javax.swing.JButton();
 
         jButton34.setBackground(new java.awt.Color(153, 153, 153));
         jButton34.setForeground(new java.awt.Color(0, 0, 0));
@@ -102,6 +102,7 @@ public class AutenticacionViews extends javax.swing.JDialog {
         jButton34.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 204, 0)));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(653, 770));
         getContentPane().setLayout(null);
 
         jPanel2.setBackground(new java.awt.Color(102, 102, 102));
@@ -335,143 +336,6 @@ public class AutenticacionViews extends javax.swing.JDialog {
         getContentPane().add(jPanel3);
         jPanel3.setBounds(6, 6, 694, 0);
 
-        jPanel9.setBackground(new java.awt.Color(153, 153, 153));
-
-        jPanel10.setBackground(new java.awt.Color(0, 102, 102));
-        jPanel10.setBorder(new javax.swing.border.MatteBorder(null));
-        jPanel10.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        jLabel9.setFont(new java.awt.Font("Arial Black", 1, 48)); // NOI18N
-        jLabel9.setForeground(java.awt.Color.white);
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("Cajero Automático");
-
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 614, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel10Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(13, Short.MAX_VALUE))
-        );
-
-        jPanel11.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel11.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        jPanelregistrar.setBackground(new java.awt.Color(0, 255, 204));
-        jPanelregistrar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        jPanelregistrar.setLayout(null);
-
-        jLabel42.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel42.setForeground(new java.awt.Color(0, 0, 0));
-        jPanelregistrar.add(jLabel42);
-        jLabel42.setBounds(203, 8, 313, 0);
-
-        jLabel44.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel44.setForeground(new java.awt.Color(0, 0, 0));
-        jPanelregistrar.add(jLabel44);
-        jLabel44.setBounds(56, 14, 466, 0);
-
-        jLabel45.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel45.setForeground(new java.awt.Color(0, 0, 0));
-        jPanelregistrar.add(jLabel45);
-        jLabel45.setBounds(8, 20, 0, 0);
-
-        jLabel46.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel46.setForeground(new java.awt.Color(0, 0, 0));
-        jPanelregistrar.add(jLabel46);
-        jLabel46.setBounds(62, 20, 0, 0);
-
-        jLabel47.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel47.setForeground(new java.awt.Color(0, 0, 0));
-        jPanelregistrar.add(jLabel47);
-        jLabel47.setBounds(68, 20, 0, 0);
-
-        jLabel10.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        jLabel10.setForeground(java.awt.Color.black);
-        jLabel10.setText("PIN");
-        jPanelregistrar.add(jLabel10);
-        jLabel10.setBounds(40, 110, 180, 30);
-
-        jLabel11.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
-        jLabel11.setForeground(java.awt.Color.black);
-        jLabel11.setText("USUARIO");
-        jPanelregistrar.add(jLabel11);
-        jLabel11.setBounds(20, 20, 150, 30);
-        jPanelregistrar.add(txtnrocuenta);
-        txtnrocuenta.setBounds(140, 60, 370, 26);
-        jPanelregistrar.add(txtpiningresado);
-        txtpiningresado.setBounds(140, 150, 370, 26);
-
-        jButtoningresar.setText("ingresar");
-        jButtoningresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtoningresarActionPerformed(evt);
-            }
-        });
-        jPanelregistrar.add(jButtoningresar);
-        jButtoningresar.setBounds(140, 200, 75, 27);
-
-        jButton7.setText("registrar");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-        jPanelregistrar.add(jButton7);
-        jButton7.setBounds(310, 200, 78, 27);
-
-        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
-        jPanel11.setLayout(jPanel11Layout);
-        jPanel11Layout.setHorizontalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanelregistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 532, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel11Layout.setVerticalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel11Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanelregistrar, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(52, Short.MAX_VALUE))
-        );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        getContentPane().add(jPanel9);
-        jPanel9.setBounds(0, 0, 640, 372);
-
         jPanel12.setBackground(new java.awt.Color(102, 102, 102));
 
         jPanel13.setBackground(new java.awt.Color(102, 102, 102));
@@ -673,7 +537,7 @@ public class AutenticacionViews extends javax.swing.JDialog {
                                 .addGap(18, 18, 18)
                                 .addComponent(jButton35, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel13Layout.createSequentialGroup()
-                                .addContainerGap(41, Short.MAX_VALUE)
+                                .addContainerGap(40, Short.MAX_VALUE)
                                 .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(button3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(button2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -691,7 +555,7 @@ public class AutenticacionViews extends javax.swing.JDialog {
                                     .addComponent(button9, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(button0, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 9, Short.MAX_VALUE)))
+                        .addGap(0, 8, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -707,15 +571,162 @@ public class AutenticacionViews extends javax.swing.JDialog {
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
+                .addGap(21, 21, 21)
                 .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel12);
-        jPanel12.setBounds(0, 380, 640, 370);
+        jPanel12.setBounds(0, 375, 640, 370);
 
-        setSize(new java.awt.Dimension(654, 752));
+        jPanel9.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel9.setMinimumSize(new java.awt.Dimension(0, 0));
+        jPanel9.setPreferredSize(new java.awt.Dimension(628, 372));
+
+        jPanel10.setBackground(new java.awt.Color(0, 102, 102));
+        jPanel10.setBorder(new javax.swing.border.MatteBorder(null));
+        jPanel10.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        jLabel9.setFont(new java.awt.Font("Arial Black", 1, 48)); // NOI18N
+        jLabel9.setForeground(java.awt.Color.white);
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("Cajero Automático");
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 604, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(13, Short.MAX_VALUE))
+        );
+
+        jPanel11.setBackground(new java.awt.Color(51, 51, 51));
+        jPanel11.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jPanelregistrar.setBackground(new java.awt.Color(0, 255, 204));
+        jPanelregistrar.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanelregistrar.setLayout(null);
+
+        jLabel42.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel42.setForeground(new java.awt.Color(0, 0, 0));
+        jPanelregistrar.add(jLabel42);
+        jLabel42.setBounds(203, 8, 313, 0);
+
+        jLabel44.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel44.setForeground(new java.awt.Color(0, 0, 0));
+        jPanelregistrar.add(jLabel44);
+        jLabel44.setBounds(56, 14, 466, 0);
+
+        jLabel45.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel45.setForeground(new java.awt.Color(0, 0, 0));
+        jPanelregistrar.add(jLabel45);
+        jLabel45.setBounds(8, 20, 0, 0);
+
+        jLabel46.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel46.setForeground(new java.awt.Color(0, 0, 0));
+        jPanelregistrar.add(jLabel46);
+        jLabel46.setBounds(62, 20, 0, 0);
+
+        jLabel47.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel47.setForeground(new java.awt.Color(0, 0, 0));
+        jPanelregistrar.add(jLabel47);
+        jLabel47.setBounds(68, 20, 0, 0);
+
+        jLabel10.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        jLabel10.setForeground(java.awt.Color.black);
+        jLabel10.setText("PIN:");
+        jPanelregistrar.add(jLabel10);
+        jLabel10.setBounds(140, 120, 180, 30);
+
+        jLabel11.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
+        jLabel11.setForeground(java.awt.Color.black);
+        jLabel11.setText("Nro Cuenta:");
+        jPanelregistrar.add(jLabel11);
+        jLabel11.setBounds(60, 30, 150, 30);
+        jPanelregistrar.add(txtnrocuenta);
+        txtnrocuenta.setBounds(180, 60, 200, 26);
+
+        txtpiningresado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtpiningresadoActionPerformed(evt);
+            }
+        });
+        jPanelregistrar.add(txtpiningresado);
+        txtpiningresado.setBounds(180, 150, 200, 26);
+
+        jButtoningresar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jButtoningresar.setText("Ingresar");
+        jButtoningresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtoningresarActionPerformed(evt);
+            }
+        });
+        jPanelregistrar.add(jButtoningresar);
+        jButtoningresar.setBounds(230, 200, 100, 40);
+
+        jButtonregistrar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        jButtonregistrar.setText("Registrar");
+        jButtonregistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonregistrarActionPerformed(evt);
+            }
+        });
+        jPanelregistrar.add(jButtonregistrar);
+        jButtonregistrar.setBounds(440, 0, 90, 30);
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanelregistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 532, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanelregistrar, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        getContentPane().add(jPanel9);
+        jPanel9.setBounds(5, 0, 630, 370);
+
+        pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -732,8 +743,9 @@ public class AutenticacionViews extends javax.swing.JDialog {
         String[] usuarioAutenticado = a.autenticar(txtnrocuenta.getText(), txtpiningresado.getText());
         if (usuarioAutenticado != null) {
             InterfazPrincipal interfaz = new InterfazPrincipal(usuarioAutenticado);
-            interfaz.setVisible(true);
+            interfaz.setVisible(true);        
             dispose();
+            interfaz.toFront();
         } else {
             JOptionPane.showMessageDialog(null, "Número de cuenta o PIN incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
             txtnrocuenta.setText("");
@@ -793,10 +805,19 @@ public class AutenticacionViews extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_button3ActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
+    private void jButtonregistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonregistrarActionPerformed
+        if (txtnrocuenta.getText().equals("ADMINISTRADOR") && txtpiningresado.getText().equals("999999")) {
+            Usuario user = new Usuario(null, true);
+            user.setVisible(true);
+            user.toFront();
+        } else {
+            JOptionPane.showMessageDialog(null, "ACCESO NO CONCEDIDO", "ACCESO DENEGADO", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_jButtonregistrarActionPerformed
 
-    }//GEN-LAST:event_jButton7ActionPerformed
+    private void txtpiningresadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpiningresadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtpiningresadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -872,9 +893,9 @@ public class AutenticacionViews extends javax.swing.JDialog {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButtoningresar;
+    private javax.swing.JButton jButtonregistrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

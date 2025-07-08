@@ -892,8 +892,10 @@ public class RetirosView extends javax.swing.JDialog {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(640, 745));
 
         jPanel9.setBackground(new java.awt.Color(153, 153, 153));
+        jPanel9.setPreferredSize(new java.awt.Dimension(594, 372));
 
         jPanel16.setBackground(new java.awt.Color(0, 102, 102));
         jPanel16.setBorder(new javax.swing.border.MatteBorder(null));
@@ -969,7 +971,11 @@ public class RetirosView extends javax.swing.JDialog {
         jPanel20.add(btnRetirar);
         btnRetirar.setBounds(390, 30, 120, 50);
 
-        txtmonto2.setBackground(new java.awt.Color(153, 153, 153));
+        txtmonto2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtmonto2ActionPerformed(evt);
+            }
+        });
         jPanel20.add(txtmonto2);
         txtmonto2.setBounds(110, 80, 170, 50);
 
@@ -986,7 +992,7 @@ public class RetirosView extends javax.swing.JDialog {
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel17Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+                .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1241,9 +1247,9 @@ public class RetirosView extends javax.swing.JDialog {
         jPanel21Layout.setHorizontalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel21Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(78, Short.MAX_VALUE)
                 .addComponent(jPanel22, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
         jPanel21Layout.setVerticalGroup(
             jPanel21Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1258,19 +1264,21 @@ public class RetirosView extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel21, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonCambiarPinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCambiarPinActionPerformed
@@ -1400,7 +1408,9 @@ public class RetirosView extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton35ActionPerformed
 
     private void buttonCancelar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelar2ActionPerformed
-
+        InterfazPrincipal interfaz = new InterfazPrincipal(usuarioActual);
+        interfaz.setVisible(true);
+        dispose();
     }//GEN-LAST:event_buttonCancelar2ActionPerformed
 
     private void jButton36ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton36ActionPerformed
@@ -1446,6 +1456,10 @@ public class RetirosView extends javax.swing.JDialog {
     private void button29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button29ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_button29ActionPerformed
+
+    private void txtmonto2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtmonto2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtmonto2ActionPerformed
 
     /**
      * @param args the command line arguments

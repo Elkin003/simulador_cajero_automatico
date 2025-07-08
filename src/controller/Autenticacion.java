@@ -29,8 +29,8 @@ public class Autenticacion {
     private String file_name = "Usuarios.dat";
 
     public boolean registrarUsuario(String cliente, String telefono, String pin,
-            String nroCuenta) {
-        String data = cliente + "\t" + telefono + "\t" + nroCuenta + "\t" + pin + "\n";
+            String nroCuenta, String saldo) {
+        String data = cliente + "\t" + telefono + "\t" + nroCuenta + "\t" + pin + "\t" + saldo + "\n";
         try {
             save(data, file_name);
             return true;
@@ -99,14 +99,14 @@ public class Autenticacion {
         Random r = new Random();
         return String.format("%06d", r.nextInt(1_000_000));
     }
-    
-    public long generarNroCuenta(){
-       Random r = new Random();
-    long min = 1000000000L;   
-    long max = 9999999999L;   
-    return  min + (long)(r.nextDouble() * (max - min + 1));
+
+    public long generarNroCuenta() {
+        Random r = new Random();
+        long min = 1000000000L;
+        long max = 9999999999L;
+        return min + (long) (r.nextDouble() * (max - min + 1));
     }
-    
+
     public String[] autenticar(String nroCuentaIngresado, String pinIngresado) {
         try {
             String[][] usuarios = listar();
