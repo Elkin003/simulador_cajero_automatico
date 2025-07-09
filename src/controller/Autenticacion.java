@@ -29,8 +29,8 @@ public class Autenticacion {
     private String file_name = "Usuarios.dat";
 
     public boolean registrarUsuario(String cliente, String telefono, String pin,
-            String nroCuenta) {
-        String data = cliente + "\t" + telefono + "\t" + nroCuenta + "\t" + pin + "\n";
+            String nroCuenta, String saldo) {
+        String data = cliente + "\t" + telefono + "\t" + nroCuenta + "\t" + pin + "\t" + saldo + "\n";
         try {
             save(data, file_name);
             return true;
@@ -45,7 +45,6 @@ public class Autenticacion {
         Integer filas = countRegister(name_file);
         if (filas > 0) {
             Integer col = countColumn(name_file);
-            System.out.println("Columnas " + col);
             data = new String[filas][col];
             FileReader file = new FileReader(path + File.separatorChar + name_file);
             BufferedReader br = new BufferedReader(file);
@@ -100,30 +99,30 @@ public class Autenticacion {
         Random r = new Random();
         return String.format("%06d", r.nextInt(1_000_000));
     }
-    
-    public long generarNroCuenta(){
-       Random r = new Random();
-    long min = 1000000000L;   
-    long max = 9999999999L;   
-    return  min + (long)(r.nextDouble() * (max - min + 1));
+
+    public long generarNroCuenta() {
+        Random r = new Random();
+        long min = 1000000000L;
+        long max = 9999999999L;
+        return min + (long) (r.nextDouble() * (max - min + 1));
     }
-    
+
     public String[] autenticar(String nroCuentaIngresado, String pinIngresado) {
-    try {
-        String[][] usuarios = listar();
-        if (usuarios != null) {
-            for (int i = 0; i < usuarios.length; i++) {
-                String nroCuenta = usuarios[i][2]; 
-                String pin = usuarios[i][3];   
-                if (nroCuenta.equals(nroCuentaIngresado) && pin.equals(pinIngresado)) {
-                    return usuarios[i];
+        try {
+            String[][] usuarios = listar();
+            if (usuarios != null) {
+                for (int i = 0; i < usuarios.length; i++) {
+                    String nroCuenta = usuarios[i][2];
+                    String pin = usuarios[i][3];
+                    if (nroCuenta.equals(nroCuentaIngresado) && pin.equals(pinIngresado)) {
+                        return usuarios[i];
+                    }
                 }
             }
+        } catch (Exception e) {
+            System.out.println("Error al obtener datos del usuario: " + e);
         }
-    } catch (Exception e) {
-        System.out.println("Error al obtener datos del usuario: " + e);
+        return null;
     }
-    return null;
-}
 
 }
