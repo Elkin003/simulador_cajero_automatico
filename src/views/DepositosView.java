@@ -48,14 +48,11 @@ public class DepositosView extends javax.swing.JDialog {
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Por favor, ingrese solo números.", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        if (montoNumero > saldoActual) {
-            JOptionPane.showMessageDialog(null, "Error en el retiro.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
 
         if (operaciones == null) {
             operaciones = new Operacionescajero();
         }
-        saldoActualizado = operaciones.retirar(usuarioActual, montoNumero);
+        saldoActualizado = operaciones.depositar(usuarioActual, montoNumero);
 
         if (saldoActualizado >= 0) {
             JOptionPane.showMessageDialog(null, "Deposito realizado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
@@ -63,7 +60,7 @@ public class DepositosView extends javax.swing.JDialog {
             String recibo = "---------- RECIBO DE DEPOSITO ----------\n"
                     + "Usuario: " + usuarioActual[0] + "\n"
                     + "Fecha: " + java.time.LocalDateTime.now() + "\n"
-                    + "Monto retirado: $" + montoNumero + "\n"
+                    + "Monto depositado: $" + montoNumero + "\n"
                     + "Saldo actual: $" + saldoActualizado + "\n"
                     + "***************************************";
 
@@ -118,7 +115,6 @@ public class DepositosView extends javax.swing.JDialog {
         txtmonto = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(640, 745));
 
         jPanel10.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -435,6 +431,12 @@ public class DepositosView extends javax.swing.JDialog {
         });
         jPanel18.add(btnDepositar);
         btnDepositar.setBounds(390, 30, 120, 50);
+
+        txtmonto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtmontoActionPerformed(evt);
+            }
+        });
         jPanel18.add(txtmonto);
         txtmonto.setBounds(110, 80, 170, 50);
 
@@ -556,11 +558,15 @@ public class DepositosView extends javax.swing.JDialog {
 
     private void btnDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepositarActionPerformed
         // TODO add your handling code here:
-        Operacionescajero depositar = new Operacionescajero();
-        double montoNumero = Double.parseDouble(txtmonto.getText());
-        depositar.depositar(usuarioActual, montoNumero);
+        //Operacionescajero depositar = new Operacionescajero();
+        //double montoNumero = Double.parseDouble(txtmonto.getText());
+        //depositar.depositar(usuarioActual, montoNumero);
         botonDepositar();
     }//GEN-LAST:event_btnDepositarActionPerformed
+
+    private void txtmontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtmontoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtmontoActionPerformed
 
     /**
      * @param args the command line arguments
