@@ -26,10 +26,10 @@ public class AutenticacionViews extends javax.swing.JDialog {
         if (String.valueOf(txtpiningresado.getPassword()).trim().length() == 0 || txtnrocuenta.getText().trim().length() == 0) {
             JOptionPane.showMessageDialog(null, "Llene todos los campos!", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            String[] usuario = a.autenticar(txtnrocuenta.getText().trim(), String.valueOf(txtpiningresado.getPassword()).trim());
+            String[] usuario = a.autenticar(txtnrocuenta.getText(), String.valueOf(txtpiningresado.getPassword()));
             if (usuario != null) {
                 Session.setUser(usuario);
-                JOptionPane.showMessageDialog(null, "Bienvenido! " + usuario[2] + " " + usuario[3], "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Bienvenido! " + usuario[0], "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
                 new InterfazPrincipal().setVisible(true);
                 dispose();
             } else {
@@ -40,10 +40,8 @@ public class AutenticacionViews extends javax.swing.JDialog {
     }
 
     private void btnRegistrar() {
-        if (txtnrocuenta.getText().equals("ADMINISTRADOR") && txtpiningresado.getPassword().equals("999999")) {
-            Usuario user = new Usuario(null, true);
-            user.setVisible(true);
-            user.toFront();
+        if (txtnrocuenta.getText().equals("ADMINISTRADOR") && String.valueOf(txtpiningresado.getPassword()).equals("999999")) {
+            new Usuario(null, true).setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, "ACCESO NO CONCEDIDO", "ACCESO DENEGADO", JOptionPane.ERROR_MESSAGE);
         }
