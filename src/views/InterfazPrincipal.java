@@ -21,13 +21,9 @@ public class InterfazPrincipal extends javax.swing.JFrame {
      */
     public InterfazPrincipal() {
         initComponents();
-    }
-
-    public InterfazPrincipal(String[] datosAutenticados) {
-        initComponents();
-        usuarioActual = datosAutenticados;
         mostrarNombreCliente();
         mostrarSaldo();
+        usuarioActual = Session.getUser();
     }
 
     private void mostrarNombreCliente() {
@@ -707,8 +703,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton31ActionPerformed
 
     private void buttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarActionPerformed
-        AutenticacionViews aut = new AutenticacionViews(null, false);
-        aut.setVisible(true);
+        new AutenticacionViews(null, false).setVisible(true);
         dispose();
     }//GEN-LAST:event_buttonCancelarActionPerformed
 
@@ -757,9 +752,8 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_button3ActionPerformed
 
     private void buttonCambiarPinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCambiarPinActionPerformed
-        CambiarPinView cambiarPin = new CambiarPinView(usuarioActual);
-        cambiarPin.setVisible(true);
-        setVisible(false);
+        new CambiarPinView(null, false).setVisible(true);
+        dispose();
     }//GEN-LAST:event_buttonCambiarPinActionPerformed
 
     /**

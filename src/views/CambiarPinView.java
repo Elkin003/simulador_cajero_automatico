@@ -21,11 +21,7 @@ public class CambiarPinView extends javax.swing.JDialog {
     public CambiarPinView(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-    }
-
-    public CambiarPinView(String[] usuarioActual) {
-        initComponents();
-        usuario = usuarioActual;
+        usuario = Session.getUser();
     }
     
     public void cambiarPINButton(){                                             
@@ -58,10 +54,8 @@ public class CambiarPinView extends javax.swing.JDialog {
         if (pinActualizado != null && pinActualizado.equals(pinNuevo)) {
             usuario[3] = pinNuevo;
             JOptionPane.showMessageDialog(null, "PIN cambiado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-            setVisible(false);
-            InterfazPrincipal interfaz = new InterfazPrincipal(usuario);
-            interfaz.setVisible(true);
-
+            new InterfazPrincipal().setVisible(true);
+            dispose();
         } else {
             if (pinActualizado != null && pinActualizado.equals(pinActual)) {
                 JOptionPane.showMessageDialog(null, "El PIN actual ingresado es incorrecto. No se pudo cambiar.", "Error de PIN", JOptionPane.ERROR_MESSAGE);
@@ -526,9 +520,8 @@ public class CambiarPinView extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton31ActionPerformed
 
     private void buttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarActionPerformed
-        InterfazPrincipal interfaz = new InterfazPrincipal(usuario);
-            interfaz.setVisible(true);
-            setVisible(false);
+        new InterfazPrincipal().setVisible(true);
+        dispose();
     }//GEN-LAST:event_buttonCancelarActionPerformed
 
     private void jButton33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton33ActionPerformed
