@@ -21,6 +21,32 @@ public class AutenticacionViews extends javax.swing.JDialog {
         initComponents();
     }
 
+    private void btnAutenticacion() {
+        Autenticacion a = new Autenticacion();
+        if (String.valueOf(txtpiningresado.getPassword()).trim().length() == 0 || txtnrocuenta.getText().trim().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Llene todos los campos!", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            String[] usuario = a.autenticar(txtnrocuenta.getText(), String.valueOf(txtpiningresado.getPassword()));
+            if (usuario != null) {
+                Session.setUser(usuario);
+                JOptionPane.showMessageDialog(null, "Bienvenido! " + usuario[0], "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
+                new InterfazPrincipal().setVisible(true);
+                dispose();
+            } else {
+                JOptionPane.showMessageDialog(null, "Número de cuenta o PIN no registrados o cuenta desactivada!", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+
+    }
+
+    private void btnRegistrar() {
+        if (txtnrocuenta.getText().equals("ADMINISTRADOR") && String.valueOf(txtpiningresado.getPassword()).equals("999999")) {
+            new Usuario(null, true).setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "ACCESO NO CONCEDIDO", "ACCESO DENEGADO", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -92,9 +118,9 @@ public class AutenticacionViews extends javax.swing.JDialog {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         txtnrocuenta = new javax.swing.JTextField();
-        txtpiningresado = new javax.swing.JTextField();
         jButtoningresar = new javax.swing.JButton();
         jButtonregistrar = new javax.swing.JButton();
+        txtpiningresado = new javax.swing.JPasswordField();
 
         jButton34.setBackground(new java.awt.Color(153, 153, 153));
         jButton34.setForeground(new java.awt.Color(0, 0, 0));
@@ -323,9 +349,9 @@ public class AutenticacionViews extends javax.swing.JDialog {
             }
         });
         jPanel6.add(txtnroCuenta);
-        txtnroCuenta.setBounds(170, 12, 271, 26);
+        txtnroCuenta.setBounds(170, 12, 271, 22);
         jPanel6.add(txtpin);
-        txtpin.setBounds(170, 40, 270, 26);
+        txtpin.setBounds(170, 40, 270, 22);
 
         jPanel5.add(jPanel6);
         jPanel6.setBounds(40, 10, 540, 232);
@@ -653,15 +679,7 @@ public class AutenticacionViews extends javax.swing.JDialog {
         jPanelregistrar.add(jLabel11);
         jLabel11.setBounds(60, 30, 150, 30);
         jPanelregistrar.add(txtnrocuenta);
-        txtnrocuenta.setBounds(180, 60, 200, 26);
-
-        txtpiningresado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtpiningresadoActionPerformed(evt);
-            }
-        });
-        jPanelregistrar.add(txtpiningresado);
-        txtpiningresado.setBounds(180, 150, 200, 26);
+        txtnrocuenta.setBounds(180, 60, 200, 22);
 
         jButtoningresar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jButtoningresar.setText("Ingresar");
@@ -682,6 +700,8 @@ public class AutenticacionViews extends javax.swing.JDialog {
         });
         jPanelregistrar.add(jButtonregistrar);
         jButtonregistrar.setBounds(440, 0, 90, 30);
+        jPanelregistrar.add(txtpiningresado);
+        txtpiningresado.setBounds(180, 150, 200, 22);
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -726,7 +746,7 @@ public class AutenticacionViews extends javax.swing.JDialog {
         getContentPane().add(jPanel9);
         jPanel9.setBounds(5, 0, 630, 370);
 
-        pack();
+        setSize(new java.awt.Dimension(652, 750));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -739,18 +759,7 @@ public class AutenticacionViews extends javax.swing.JDialog {
     }//GEN-LAST:event_buttonEnterActionPerformed
 
     private void jButtoningresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtoningresarActionPerformed
-        Autenticacion a = new Autenticacion();
-        String[] usuarioAutenticado = a.autenticar(txtnrocuenta.getText(), txtpiningresado.getText());
-        if (usuarioAutenticado != null) {
-            InterfazPrincipal interfaz = new InterfazPrincipal(usuarioAutenticado);
-            interfaz.setVisible(true);        
-            dispose();
-            interfaz.toFront();
-        } else {
-            JOptionPane.showMessageDialog(null, "Número de cuenta o PIN incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
-            txtnrocuenta.setText("");
-            txtpiningresado.setText("");
-        }
+        btnAutenticacion();
     }//GEN-LAST:event_jButtoningresarActionPerformed
 
     private void jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton31ActionPerformed
@@ -806,18 +815,8 @@ public class AutenticacionViews extends javax.swing.JDialog {
     }//GEN-LAST:event_button3ActionPerformed
 
     private void jButtonregistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonregistrarActionPerformed
-        if (txtnrocuenta.getText().equals("ADMINISTRADOR") && txtpiningresado.getText().equals("999999")) {
-            Usuario user = new Usuario(null, true);
-            user.setVisible(true);
-            user.toFront();
-        } else {
-            JOptionPane.showMessageDialog(null, "ACCESO NO CONCEDIDO", "ACCESO DENEGADO", JOptionPane.ERROR_MESSAGE);
-        }
+        btnRegistrar();
     }//GEN-LAST:event_jButtonregistrarActionPerformed
-
-    private void txtpiningresadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpiningresadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtpiningresadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -929,6 +928,6 @@ public class AutenticacionViews extends javax.swing.JDialog {
     private javax.swing.JTextField txtnroCuenta;
     private javax.swing.JTextField txtnrocuenta;
     private javax.swing.JTextField txtpin;
-    private javax.swing.JTextField txtpiningresado;
+    private javax.swing.JPasswordField txtpiningresado;
     // End of variables declaration//GEN-END:variables
 }

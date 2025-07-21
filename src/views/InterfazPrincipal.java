@@ -5,10 +5,8 @@
 package views;
 
 import controller.Autenticacion;
-import controller.CambiarPinyMostrarSaldo;
-
 import java.awt.Color;
-
+import controller.CambiarPinyMostrarSaldo;
 
 /**
  *
@@ -23,13 +21,9 @@ public class InterfazPrincipal extends javax.swing.JFrame {
      */
     public InterfazPrincipal() {
         initComponents();
-    }
-
-    public InterfazPrincipal(String[] datosAutenticados) {
-        initComponents();
-        usuarioActual = datosAutenticados;
         mostrarNombreCliente();
         mostrarSaldo();
+        usuarioActual = Session.getUser();
     }
 
     private void mostrarNombreCliente() {
@@ -43,8 +37,8 @@ public class InterfazPrincipal extends javax.swing.JFrame {
 
     private void mostrarSaldo() {
         if (usuarioActual != null && txtMostrarSaldo != null) {
-            CambiarPinyMostrarSaldo otros = new CambiarPinyMostrarSaldo();
-            double saldoActual = otros.obtenerSaldo(usuarioActual);
+            CambiarPinyMostrarSaldo pinCambiar = new CambiarPinyMostrarSaldo();
+            double saldoActual = pinCambiar.obtenerSaldo(usuarioActual);
             String saldoTexto = Double.toString(saldoActual);
             txtMostrarSaldo.setText("$" + saldoTexto);
         } else if (txtMostrarSaldo != null) {
@@ -93,8 +87,8 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         buttonCambiarPin = new javax.swing.JButton();
-        buttonDepositar = new javax.swing.JButton();
-        buttonRetirar = new javax.swing.JButton();
+        jButton15 = new javax.swing.JButton();
+        jButton19 = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
@@ -392,25 +386,15 @@ public class InterfazPrincipal extends javax.swing.JFrame {
         jPanel18.add(buttonCambiarPin);
         buttonCambiarPin.setBounds(210, 190, 120, 50);
 
-        buttonDepositar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        buttonDepositar.setText("Depositar");
-        buttonDepositar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonDepositarActionPerformed(evt);
-            }
-        });
-        jPanel18.add(buttonDepositar);
-        buttonDepositar.setBounds(210, 90, 120, 50);
+        jButton15.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jButton15.setText("Depositar");
+        jPanel18.add(jButton15);
+        jButton15.setBounds(210, 90, 120, 50);
 
-        buttonRetirar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        buttonRetirar.setText("Retirar");
-        buttonRetirar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonRetirarActionPerformed(evt);
-            }
-        });
-        jPanel18.add(buttonRetirar);
-        buttonRetirar.setBounds(210, 140, 120, 50);
+        jButton19.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jButton19.setText("Retirar");
+        jPanel18.add(jButton19);
+        jButton19.setBounds(210, 140, 120, 50);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -719,8 +703,7 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton31ActionPerformed
 
     private void buttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarActionPerformed
-        AutenticacionViews aut = new AutenticacionViews(null, false);
-        aut.setVisible(true);
+        new AutenticacionViews(null, false).setVisible(true);
         dispose();
     }//GEN-LAST:event_buttonCancelarActionPerformed
 
@@ -769,22 +752,9 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_button3ActionPerformed
 
     private void buttonCambiarPinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCambiarPinActionPerformed
-        CambiarPinView cambiarPin = new CambiarPinView(usuarioActual);
-        cambiarPin.setVisible(true);
+        new CambiarPinView(null, false).setVisible(true);
         dispose();
     }//GEN-LAST:event_buttonCambiarPinActionPerformed
-
-    private void buttonDepositarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDepositarActionPerformed
-        DepositosView depositos = new DepositosView(usuarioActual);
-        depositos.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_buttonDepositarActionPerformed
-
-    private void buttonRetirarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRetirarActionPerformed
-        RetirosView retiros = new RetirosView(usuarioActual);
-        retiros.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_buttonRetirarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -834,15 +804,15 @@ public class InterfazPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton button9;
     private javax.swing.JButton buttonCambiarPin;
     private javax.swing.JButton buttonCancelar;
-    private javax.swing.JButton buttonDepositar;
-    private javax.swing.JButton buttonRetirar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton18;
+    private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton31;

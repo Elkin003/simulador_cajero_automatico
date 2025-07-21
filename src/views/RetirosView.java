@@ -24,11 +24,7 @@ public class RetirosView extends javax.swing.JDialog {
     public RetirosView(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-    }
-
-    public RetirosView(String[] datosAutenticados) {
-        initComponents();
-        usuarioActual = datosAutenticados;
+        usuarioActual = Session.getUser();
         operaciones = new Operacionescajero();
     }
 
@@ -70,10 +66,8 @@ public class RetirosView extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, recibo, "Recibo de Operación", JOptionPane.INFORMATION_MESSAGE);
 
             // Solo se cierra esta ventana
+            new InterfazPrincipal().setVisible(true);
             dispose(); // o setVisible(false);
-            InterfazPrincipal interfaz = new InterfazPrincipal(usuarioActual);
-            interfaz.setVisible(true);
-
         }
 
         txtmonto2.setText("");
@@ -1456,8 +1450,7 @@ public class RetirosView extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton35ActionPerformed
 
     private void buttonCancelar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelar2ActionPerformed
-        InterfazPrincipal interfaz = new InterfazPrincipal(usuarioActual);
-        interfaz.setVisible(true);
+        new InterfazPrincipal().setVisible(true);
         dispose();
     }//GEN-LAST:event_buttonCancelar2ActionPerformed
 

@@ -24,14 +24,10 @@ public class DepositosView extends javax.swing.JDialog {
     public DepositosView(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-    }
-
-    public DepositosView(String[] datosAutenticados) {
-        initComponents();
-        usuarioActual = datosAutenticados;
+        usuarioActual = Session.getUser();
         operaciones = new Operacionescajero();
-
     }
+
     private void botonDepositar(){
         double saldoActual = Double.parseDouble(usuarioActual[4]);
         if (usuarioActual == null) {
@@ -65,11 +61,8 @@ public class DepositosView extends javax.swing.JDialog {
                     + "***************************************";
 
             JOptionPane.showMessageDialog(null, recibo, "Recibo de Operación", JOptionPane.INFORMATION_MESSAGE);
-
+            new InterfazPrincipal().setVisible(true);
             dispose(); 
-            InterfazPrincipal interfaz = new InterfazPrincipal(usuarioActual);
-            interfaz.setVisible(true);
-
         }
 
         txtmonto.setText("");
@@ -507,8 +500,7 @@ public class DepositosView extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton31ActionPerformed
 
     private void buttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarActionPerformed
-        InterfazPrincipal interfaz = new InterfazPrincipal(usuarioActual);
-        interfaz.setVisible(true);
+        new InterfazPrincipal().setVisible(true);
         dispose();
     }//GEN-LAST:event_buttonCancelarActionPerformed
 

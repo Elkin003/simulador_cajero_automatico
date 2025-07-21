@@ -30,7 +30,7 @@ public class Autenticacion {
 
     public boolean registrarUsuario(String cliente, String telefono, String pin,
             String nroCuenta, String saldo) {
-        String data = cliente + "\t" + telefono + "\t" + nroCuenta + "\t" + pin + "\t" + saldo + "\n";
+        String data = cliente + "\t" + telefono + "\t" + nroCuenta + "\t" + pin + "\t" + saldo + "\t" + true + "\n";
         try {
             save(data, file_name);
             return true;
@@ -108,21 +108,63 @@ public class Autenticacion {
     }
 
     public String[] autenticar(String nroCuentaIngresado, String pinIngresado) {
+        int intentos = 0; // Variable local para contar intentos
         try {
             String[][] usuarios = listar();
             if (usuarios != null) {
                 for (int i = 0; i < usuarios.length; i++) {
                     String nroCuenta = usuarios[i][2];
                     String pin = usuarios[i][3];
-                    if (nroCuenta.equals(nroCuentaIngresado) && pin.equals(pinIngresado)) {
-                        return usuarios[i];
+                    boolean activo = Boolean.parseBoolean(usuarios[i][5]);
+
+                    if (nroCuenta.equals(nroCuentaIngresado)) {
+                        if (!activo) {
+                            System.out.println("La cuenta está bloqueada.");
+                            return null;
+                        }
+
+                        while (intentos < 3) {
+                            if (pin.equals(pinIngresado)) {
+                                System.out.println("Autenticación exitosa.");
+                                return usuarios[i];
+                            } else {
+                                intentos++;
+                                System.out.println("PIN incorrecto. Intento " + intentos + " de 3.");
+                                if (intentos >= 3) {
+                                    usuarios[i][5] = "false";
+                                    actualizarUsuario(usuarios);
+                                    System.out.println("Cuenta bloqueada por 3 intentos fallidos.");
+                                    return null;
+                                }
+
+                                // Simulando una nueva entrada de PIN (porque no hay UI aquí)
+                                System.out.println("Vuelve a ingresar el PIN:");
+                                // Aquí deberías recibir el nuevo PIN, por ejemplo, desde consola o GUI
+                                return null; // Como no tenemos forma de recibir nuevo PIN aquí
+                            }
+                        }
                     }
                 }
             }
         } catch (Exception e) {
-            System.out.println("Error al obtener datos del usuario: " + e);
+            System.out.println("Error al autenticar: " + e);
         }
         return null;
+    }
+
+    public void actualizarUsuario(String[][] data) throws IOException {
+        FileWriter file = new FileWriter(path + File.separatorChar + file_name, false); // Sobrescribir archivo
+        for (int i = 0; i < data.length; i++) {
+            String linea = "";
+            for (int j = 0; j < data[i].length; j++) {
+                linea += data[i][j];
+                if (j < data[i].length - 1) {
+                    linea += "\t"; // Agregar tabulaciones entre columnas
+                }
+            }
+            file.write(linea + "\n"); // Escribir una línea por usuario
+        }
+        file.close();
     }
 
 }

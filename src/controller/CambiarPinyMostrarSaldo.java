@@ -59,9 +59,11 @@ public class CambiarPinyMostrarSaldo {
                 System.out.println("Archivo no encontrado");
                 return false;
             }
+
             BufferedReader br = new BufferedReader(new FileReader(file));
             StringBuilder sb = new StringBuilder();
             String linea;
+
             while ((linea = br.readLine()) != null) {
                 String[] partes = linea.split("\t");
                 if (partes.length >= 5 && partes[2].equals(nroCuenta)) {
@@ -71,9 +73,11 @@ public class CambiarPinyMostrarSaldo {
                 sb.append(linea).append("\n");
             }
             br.close();
+
             FileWriter fw = new FileWriter(file, false);
             fw.write(sb.toString());
             fw.close();
+
             return true;
         } catch (IOException e) {
             System.out.println("Error al actualizar PIN: " + e);

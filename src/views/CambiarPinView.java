@@ -21,11 +21,7 @@ public class CambiarPinView extends javax.swing.JDialog {
     public CambiarPinView(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-    }
-
-    public CambiarPinView(String[] usuarioActual) {
-        initComponents();
-        usuario = usuarioActual;
+        usuario = Session.getUser();
     }
     
     public void cambiarPINButton(){                                             
@@ -58,10 +54,8 @@ public class CambiarPinView extends javax.swing.JDialog {
         if (pinActualizado != null && pinActualizado.equals(pinNuevo)) {
             usuario[3] = pinNuevo;
             JOptionPane.showMessageDialog(null, "PIN cambiado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-            setVisible(false);
-            InterfazPrincipal interfaz = new InterfazPrincipal(usuario);
-            interfaz.setVisible(true);
-
+            new InterfazPrincipal().setVisible(true);
+            dispose();
         } else {
             if (pinActualizado != null && pinActualizado.equals(pinActual)) {
                 JOptionPane.showMessageDialog(null, "El PIN actual ingresado es incorrecto. No se pudo cambiar.", "Error de PIN", JOptionPane.ERROR_MESSAGE);
@@ -183,7 +177,7 @@ public class CambiarPinView extends javax.swing.JDialog {
         jLabel7.setForeground(java.awt.Color.black);
         jLabel7.setText("Pin Actual:");
         jPanel18.add(jLabel7);
-        jLabel7.setBounds(110, 20, 120, 30);
+        jLabel7.setBounds(110, 10, 120, 30);
 
         buttonConfirmar.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         buttonConfirmar.setText("Confirmar");
@@ -209,7 +203,7 @@ public class CambiarPinView extends javax.swing.JDialog {
             }
         });
         jPanel18.add(txtPinActual);
-        txtPinActual.setBounds(230, 40, 100, 30);
+        txtPinActual.setBounds(230, 30, 100, 30);
 
         jLabel6.setFont(new java.awt.Font("Arial Black", 1, 18)); // NOI18N
         jLabel6.setForeground(java.awt.Color.black);
@@ -512,7 +506,7 @@ public class CambiarPinView extends javax.swing.JDialog {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -526,9 +520,8 @@ public class CambiarPinView extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton31ActionPerformed
 
     private void buttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarActionPerformed
-        InterfazPrincipal interfaz = new InterfazPrincipal(usuario);
-            interfaz.setVisible(true);
-            setVisible(false);
+        new InterfazPrincipal().setVisible(true);
+        dispose();
     }//GEN-LAST:event_buttonCancelarActionPerformed
 
     private void jButton33ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton33ActionPerformed
