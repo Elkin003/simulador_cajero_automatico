@@ -108,7 +108,6 @@ public class Autenticacion {
     }
 
     public String[] autenticar(String nroCuentaIngresado, String pinIngresado) {
-        int intentos = 0; // Variable local para contar intentos
         try {
             String[][] usuarios = listar();
             if (usuarios != null) {
@@ -120,28 +119,16 @@ public class Autenticacion {
                     if (nroCuenta.equals(nroCuentaIngresado)) {
                         if (!activo) {
                             System.out.println("La cuenta está bloqueada.");
-                            return null;
+                            return new String[]{"BLOQUEADA"};
                         }
 
-                        while (intentos < 3) {
-                            if (pin.equals(pinIngresado)) {
-                                System.out.println("Autenticación exitosa.");
-                                return usuarios[i];
-                            } else {
-                                intentos++;
-                                System.out.println("PIN incorrecto. Intento " + intentos + " de 3.");
-                                if (intentos >= 3) {
-                                    usuarios[i][5] = "false";
-                                    actualizarUsuario(usuarios);
-                                    System.out.println("Cuenta bloqueada por 3 intentos fallidos.");
-                                    return null;
-                                }
+                        if (pin.equals(pinIngresado)) {
+                            System.out.println("Autenticación exitosa.");
+                            return usuarios[i];
 
-                                // Simulando una nueva entrada de PIN (porque no hay UI aquí)
-                                System.out.println("Vuelve a ingresar el PIN:");
-                                // Aquí deberías recibir el nuevo PIN, por ejemplo, desde consola o GUI
-                                return null; // Como no tenemos forma de recibir nuevo PIN aquí
-                            }
+                        } else {
+                            System.out.println("PIN incorrecto.");
+                            return new String[]{"PIN INCORRECTO"};
                         }
                     }
                 }
@@ -149,22 +136,37 @@ public class Autenticacion {
         } catch (Exception e) {
             System.out.println("Error al autenticar: " + e);
         }
-        return null;
+        return new String[]{"NO ENCONTRADA"};
     }
 
     public void actualizarUsuario(String[][] data) throws IOException {
-        FileWriter file = new FileWriter(path + File.separatorChar + file_name, false); // Sobrescribir archivo
+        FileWriter file = new FileWriter(path + File.separatorChar + file_name, false);
         for (int i = 0; i < data.length; i++) {
             String linea = "";
             for (int j = 0; j < data[i].length; j++) {
                 linea += data[i][j];
                 if (j < data[i].length - 1) {
-                    linea += "\t"; // Agregar tabulaciones entre columnas
+                    linea += "\t";
                 }
             }
-            file.write(linea + "\n"); // Escribir una línea por usuario
+            file.write(linea + "\n");
         }
         file.close();
+    }
+
+    public void bloquearCuenta(String nroCuenta) {
+        try {
+            String[][] usuarios = listar();
+            for (int i = 0; i < usuarios.length; i++) {
+                if (usuarios[i][2].equals(nroCuenta)) {
+                    usuarios[i][5] = "false";
+                    break;
+                }
+            }
+            actualizarUsuario(usuarios); 
+        } catch (Exception e) {
+            System.out.println("Error al bloquear cuenta: " + e);
+        }
     }
 
 }
