@@ -21,23 +21,52 @@ public class AutenticacionViews extends javax.swing.JDialog {
         initComponents();
     }
 
-    private void btnAutenticacion() {
-        Autenticacion a = new Autenticacion();
-        if (String.valueOf(txtpiningresado.getPassword()).trim().length() == 0 || txtnrocuenta.getText().trim().length() == 0) {
-            JOptionPane.showMessageDialog(null, "Llene todos los campos!", "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            String[] usuario = a.autenticar(txtnrocuenta.getText(), String.valueOf(txtpiningresado.getPassword()));
-            if (usuario != null) {
-                Session.setUser(usuario);
-                JOptionPane.showMessageDialog(null, "Bienvenido! " + usuario[0], "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
-                new InterfazPrincipal().setVisible(true);
-                dispose();
-            } else {
-                JOptionPane.showMessageDialog(null, "Número de cuenta o PIN no registrados o cuenta desactivada!", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        }
+    int intentos = 0;
 
+    private void botonIngresar() {
+        String nroCuenta = txtnrocuenta.getText();
+        String pin = String.valueOf(txtpiningresado.getPassword());
+        Autenticacion a = new Autenticacion();
+        String[] resultado = a.autenticar(nroCuenta, pin);
+
+        if (resultado[0].equals("BLOQUEADA")) {
+            JOptionPane.showMessageDialog(this, "La cuenta está bloqueada.");
+        } else if (resultado[0].equals("PIN INCORRECTO")) {
+            intentos++;
+            JOptionPane.showMessageDialog(this, "PIN incorrecto. Intento " + intentos + " de 3.");
+            if (intentos >= 3) {
+                a.bloquearCuenta(nroCuenta);
+                JOptionPane.showMessageDialog(this, "Cuenta bloqueada por 3 intentos fallidos.");
+            }
+        } else if (resultado[0].equals("NO ENCONTRADA")) {
+            JOptionPane.showMessageDialog(this, "Número de cuenta no encontrado.");
+        } else {
+            JOptionPane.showMessageDialog(this, "Bienvenido " + resultado[0]);
+            intentos = 0;
+            Session.setUser(resultado);
+            new InterfazPrincipal().setVisible(true);
+            dispose();
+        }
     }
+
+    /**
+     * private void btnAutenticacion() { Autenticacion a = new Autenticacion();
+     * if (String.valueOf(txtpiningresado.getPassword()).trim().length() == 0 ||
+     * txtnrocuenta.getText().trim().length() == 0) {
+     * JOptionPane.showMessageDialog(null, "Llene todos los campos!", "Error",
+     * JOptionPane.ERROR_MESSAGE); } else { String[] usuario =
+     * a.autenticar(txtnrocuenta.getText(),
+     * String.valueOf(txtpiningresado.getPassword())); if (usuario != null) {
+     * Session.setUser(usuario); JOptionPane.showMessageDialog(null,
+     * "Bienvenido! " + usuario[0], "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
+     * new InterfazPrincipal().setVisible(true); dispose(); } else {
+     * JOptionPane.showMessageDialog(null, "Número de cuenta o PIN no
+     * registrados o cuenta desactivada!", "Error", JOptionPane.ERROR_MESSAGE);
+     * } }
+     *
+     * }
+     */
+    
 
     private void btnRegistrar() {
         if (txtnrocuenta.getText().equals("ADMINISTRADOR") && String.valueOf(txtpiningresado.getPassword()).equals("999999")) {
@@ -759,7 +788,7 @@ public class AutenticacionViews extends javax.swing.JDialog {
     }//GEN-LAST:event_buttonEnterActionPerformed
 
     private void jButtoningresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtoningresarActionPerformed
-        btnAutenticacion();
+        botonIngresar();
     }//GEN-LAST:event_jButtoningresarActionPerformed
 
     private void jButton31ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton31ActionPerformed
