@@ -1,6 +1,8 @@
 package views;
 
 import Controller.Operacionescajero;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 
 /*
@@ -16,7 +18,7 @@ public class DepositosView extends javax.swing.JDialog {
     private String[] usuarioActual;
     double montoNumero;
     double saldoActualizado;
-    private Operacionescajero operaciones; 
+    private Operacionescajero operaciones;
 
     /**
      * Creates new form DepositosView
@@ -28,8 +30,8 @@ public class DepositosView extends javax.swing.JDialog {
         operaciones = new Operacionescajero();
     }
 
-    private void botonDepositar(){
-        double saldoActual = Double.parseDouble(usuarioActual[4]);
+    private void botonDepositar() {
+       // double saldoActual = Double.parseDouble(usuarioActual[4]);
         if (usuarioActual == null) {
             JOptionPane.showMessageDialog(null, "No hay datos de usuario cargados.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
@@ -52,7 +54,9 @@ public class DepositosView extends javax.swing.JDialog {
 
         if (saldoActualizado >= 0) {
             JOptionPane.showMessageDialog(null, "Deposito realizado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-
+            DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+            String fechaHoraFormateada = LocalDateTime.now().format(formato);
+            
             String recibo = "---------- RECIBO DE DEPOSITO ----------\n"
                     + "Usuario: " + usuarioActual[0] + "\n"
                     + "Fecha: " + java.time.LocalDateTime.now() + "\n"
@@ -62,7 +66,7 @@ public class DepositosView extends javax.swing.JDialog {
 
             JOptionPane.showMessageDialog(null, recibo, "Recibo de Operación", JOptionPane.INFORMATION_MESSAGE);
             new InterfazPrincipal().setVisible(true);
-            dispose(); 
+            dispose();
         }
 
         txtmonto.setText("");
