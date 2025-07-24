@@ -48,7 +48,7 @@ public class ModelotablasUsuarios extends AbstractTableModel {
             case 5:
                 return data[rowIndex][5];
             case 6:
-                return data[rowIndex][6];    
+                return data[rowIndex][6];
             default:
                 return null;
         }
@@ -62,7 +62,7 @@ public class ModelotablasUsuarios extends AbstractTableModel {
             case 1:
                 return "Teléfono";
             case 2:
-                return "Cedula";
+                return "Cédula";
             case 3:
                 return "Nro Cuenta";
             case 4:

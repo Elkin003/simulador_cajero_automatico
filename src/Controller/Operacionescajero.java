@@ -15,7 +15,7 @@ import java.io.IOException;
  *
  * @author asus
  */
-public class Operacionescajero {
+public class OperacionesCajero {
     
     private String path = "data";
     private String file_name = "Usuarios.dat";
@@ -27,9 +27,9 @@ public class Operacionescajero {
         if (usuarioAutenticado != null && monto > 0){
              double saldoActual = obSaldo.obtenerSaldo(usuarioAutenticado);
             double nuevoSaldo = saldoActual + monto;
-            boolean exito = actualizarSaldo(usuarioAutenticado[2], nuevoSaldo);
+            boolean exito = actualizarSaldo(usuarioAutenticado[3], nuevoSaldo);
             if (exito) {
-                usuarioAutenticado[4] = String.valueOf(nuevoSaldo);
+                usuarioAutenticado[5] = String.valueOf(nuevoSaldo);
                 System.out.println("Depósito exitoso. Nuevo saldo: " + nuevoSaldo);
                 return nuevoSaldo;
                 
@@ -47,9 +47,9 @@ public class Operacionescajero {
                 return -1;
             }
             double nuevoSaldo = saldoActual - monto;
-            boolean exito = actualizarSaldo(usuarioAutenticado[2], nuevoSaldo);
+            boolean exito = actualizarSaldo(usuarioAutenticado[3], nuevoSaldo);
             if (exito) {
-                usuarioAutenticado[4] = String.valueOf(nuevoSaldo);
+                usuarioAutenticado[5] = String.valueOf(nuevoSaldo);
                 System.out.println("Retiro exitoso. Nuevo saldo: " + nuevoSaldo);
                 return nuevoSaldo;
             } else {
@@ -72,8 +72,8 @@ public class Operacionescajero {
 
             while ((linea = br.readLine()) != null) {
                 String[] partes = linea.split("\t");
-                if (partes.length >= 5 && partes[2].equals(nroCuenta)) {
-                    partes[4] = String.valueOf(nuevoSaldo);
+                if (partes.length >= 5 && partes[3].equals(nroCuenta)) {
+                    partes[5] = String.valueOf(nuevoSaldo);
                     linea = String.join("\t", partes);
                 }
                 sb.append(linea).append("\n");

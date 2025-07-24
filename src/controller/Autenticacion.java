@@ -103,8 +103,8 @@ public class Autenticacion {
     public long generarNroCuenta() {
         Random r = new Random();
         long min = 1000000000L;
-        long max = 9999999999L;
-        return min + (long) (r.nextDouble() * (max - min + 1));
+        long max = 10000000000L;
+        return  r.nextLong(min, max);
     }
 
     public String[] autenticar(String nroCuentaIngresado, String pinIngresado) {
@@ -112,22 +112,19 @@ public class Autenticacion {
             String[][] usuarios = listar();
             if (usuarios != null) {
                 for (int i = 0; i < usuarios.length; i++) {
-                    String nroCuenta = usuarios[i][2];
-                    String pin = usuarios[i][3];
-                    boolean activo = Boolean.parseBoolean(usuarios[i][5]);
+                    String nroCuenta = usuarios[i][3];
+                    String pin = usuarios[i][4];
+                    boolean activo = Boolean.parseBoolean(usuarios[i][6]);
 
                     if (nroCuenta.equals(nroCuentaIngresado)) {
                         if (!activo) {
-                            System.out.println("La cuenta está bloqueada.");
                             return new String[]{"BLOQUEADA"};
                         }
 
                         if (pin.equals(pinIngresado)) {
-                            System.out.println("Autenticación exitosa.");
                             return usuarios[i];
 
                         } else {
-                            System.out.println("PIN incorrecto.");
                             return new String[]{"PIN INCORRECTO"};
                         }
                     }
@@ -153,22 +150,38 @@ public class Autenticacion {
         }
         file.close();
     }
-    
-     public Boolean validarCedula(String x) {
+
+    public void bloquearCuenta(String nroCuenta) {
+        try {
+            String[][] usuarios = listar();
+            for (int i = 0; i < usuarios.length; i++) {
+                if (usuarios[i][3].equals(nroCuenta)) {
+                    usuarios[i][6] = "false";
+                    break;
+                }
+            }
+            actualizarUsuario(usuarios);
+        } catch (Exception e) {
+            System.out.println("Error al bloquear cuenta: " + e);
+        }
+    }
+
+    public Boolean validarCedula(String cedula) {
         int suma = 0;
-        if (x.length() == 9) {
-            
+        
+        if (cedula.length() != 10) {
             return false;
+            
         } else {
-            int a[] = new int[x.length() / 2];
-            int b[] = new int[(x.length() / 2)];
+            int a[] = new int[cedula.length() / 2];
+            int b[] = new int[cedula.length() / 2];
             int c = 0;
             int d = 1;
-            for (int i = 0; i < x.length() / 2; i++) {
-                a[i] = Integer.parseInt(String.valueOf(x.charAt(c)));
+            for (int i = 0; i < cedula.length() / 2; i++) {
+                a[i] = Integer.parseInt(String.valueOf(cedula.charAt(c)));
                 c = c + 2;
-                if (i < (x.length() / 2) - 1) {
-                    b[i] = Integer.parseInt(String.valueOf(x.charAt(d)));
+                if (i < (cedula.length() / 2) - 1) {
+                    b[i] = Integer.parseInt(String.valueOf(cedula.charAt(d)));
                     d = d + 2;
                 }
             }
@@ -182,30 +195,13 @@ public class Autenticacion {
             }
             int aux = suma / 10;
             int dec = (aux + 1) * 10;
-            if ((dec - suma) == Integer.parseInt(String.valueOf(x.charAt(x.length() - 1)))) {
+            if ((dec - suma) == Integer.parseInt(String.valueOf(cedula.charAt(cedula.length() - 1)))) {
                 return true;
-            } else if (suma % 10 == 0 && x.charAt(x.length() - 1) == '0') {
+            } else if (suma % 10 == 0 && cedula.charAt(cedula.length() - 1) == '0') {
                 return true;
             } else {
                 return false;
             }
-
         }
     }
-
-    public void bloquearCuenta(String nroCuenta) {
-        try {
-            String[][] usuarios = listar();
-            for (int i = 0; i < usuarios.length; i++) {
-                if (usuarios[i][2].equals(nroCuenta)) {
-                    usuarios[i][5] = "false";
-                    break;
-                }
-            }
-            actualizarUsuario(usuarios); 
-        } catch (Exception e) {
-            System.out.println("Error al bloquear cuenta: " + e);
-        }
-    }
-
 }

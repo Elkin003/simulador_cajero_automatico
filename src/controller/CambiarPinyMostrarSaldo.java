@@ -14,7 +14,7 @@ public class CambiarPinyMostrarSaldo {
     // Obtener saldo del usuario autenticado
     public double obtenerSaldo(String[] usuarioAutenticado) {
         if (usuarioAutenticado != null) {
-            String saldoArchivo = usuarioAutenticado[4];
+            String saldoArchivo = usuarioAutenticado[5];
             try {
                 double saldoObtenido = Double.parseDouble(saldoArchivo);
                 return saldoObtenido;
@@ -30,11 +30,11 @@ public class CambiarPinyMostrarSaldo {
     // Cambiar PIN y actualizar el archivo
     public String cambiarPin(String[] usuarioAutenticado, String pinIngresado, String pinNuevo) {
         if (usuarioAutenticado != null) {
-            String pinActual = usuarioAutenticado[3];
+            String pinActual = usuarioAutenticado[4];
             if (pinActual.equals(pinIngresado)) {
-                boolean exito = actualizarPin(usuarioAutenticado[2], pinNuevo);
+                boolean exito = actualizarPin(usuarioAutenticado[3], pinNuevo);
                 if (exito) {
-                    usuarioAutenticado[3] = pinNuevo;
+                    usuarioAutenticado[4] = pinNuevo;
                     System.out.println("PIN cambiado y guardado correctamente.");
                     return pinNuevo;
                 } else {
@@ -66,8 +66,8 @@ public class CambiarPinyMostrarSaldo {
 
             while ((linea = br.readLine()) != null) {
                 String[] partes = linea.split("\t");
-                if (partes.length >= 5 && partes[2].equals(nroCuenta)) {
-                    partes[3] = nuevoPin;
+                if (partes.length >= 5 && partes[3].equals(nroCuenta)) {
+                    partes[4] = nuevoPin;
                     linea = String.join("\t", partes);
                 }
                 sb.append(linea).append("\n");
