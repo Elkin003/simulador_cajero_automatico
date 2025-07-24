@@ -46,13 +46,41 @@ public class FrmUsuario extends javax.swing.JDialog {
         if (txtcliente.getText().isEmpty() || txttelefono.getText().isEmpty() || txtcedula.getText().isEmpty()
                 || txtpin.getText().isEmpty() || txtnrocuentagenerado.getText().isEmpty() || txtsaldo.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Faltan datos!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Validar que el cliente sea solo letras
+        if (!a.esSoloLetras(txtcliente.getText())) {
+            JOptionPane.showMessageDialog(null, "El nombre del cliente debe contener solo letras.", "Error", JOptionPane.ERROR_MESSAGE);
+            limpiar();
+            return;
+        }
+
+        // Validar que teléfono, cédula, pin, nro cuenta y saldo sean solo números
+        if (!a.esSoloNumeros(txttelefono.getText()) || txttelefono.getText().length() != 10) {
+            JOptionPane.showMessageDialog(null, "El teléfono debe contener solo números.", "Error", JOptionPane.ERROR_MESSAGE);
+            limpiar();
+            return;
+        }
+
+        if (!a.validarCedula(txtcedula.getText())) {
+            JOptionPane.showMessageDialog(null, "Cédula no válida!", "Error", JOptionPane.ERROR_MESSAGE);
+            limpiar();
+            return;
+        }
+
+        if (!a.esSoloNumeros(txtsaldo.getText())) {
+            JOptionPane.showMessageDialog(null, "Saldo deben contener solo números", "Error", JOptionPane.ERROR_MESSAGE);
+            limpiar();
+            return;
+        }
+ 
+        if (a.registrarUsuario(txtcliente.getText(), txttelefono.getText(), txtcedula.getText(), txtpin.getText(), txtnrocuentagenerado.getText(), txtsaldo.getText())) {
+            JOptionPane.showMessageDialog(null, "Se ha registrado correctamente!", "Success", JOptionPane.INFORMATION_MESSAGE);
+            limpiar();
         } else {
-            if (a.registrarUsuario(txtcliente.getText(), txttelefono.getText(), txtcedula.getText(), txtpin.getText(), txtnrocuentagenerado.getText(), txtsaldo.getText())) {
-                JOptionPane.showMessageDialog(null, "Se a registrado correctamente!", "Success", JOptionPane.INFORMATION_MESSAGE);
-                limpiar();
-            } else {
-                JOptionPane.showMessageDialog(null, "No se pudo registrar correctamente!", "Error", JOptionPane.ERROR_MESSAGE);
-            }
+            JOptionPane.showMessageDialog(null, "No se pudo registrar correctamente!", "Error", JOptionPane.ERROR_MESSAGE);
+            limpiar();
         }
     }
 

@@ -204,4 +204,13 @@ public class Autenticacion {
             }
         }
     }
+    
+    public boolean esSoloLetras(String texto) {
+        return texto.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+");
+    }
+
+
+    public boolean esSoloNumeros(String texto) {
+        return texto.matches("\\d+");
+    }
 }
