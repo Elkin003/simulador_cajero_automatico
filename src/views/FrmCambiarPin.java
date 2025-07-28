@@ -28,7 +28,7 @@ public class FrmCambiarPin extends javax.swing.JDialog {
     }
 
     public void cambiarPINButton() {
-        String pinActual = txtPinConfirmado.getText();
+        String pinActual = txtPinActual.getText();
         String pinNuevo = txtPinNuevo.getText();
         String pinConfirmado = txtPinConfirmado.getText();
         if (usuario == null) {
@@ -55,7 +55,7 @@ public class FrmCambiarPin extends javax.swing.JDialog {
         String pinActualizado = pinCambiar.cambiarPin(usuario, pinActual, pinNuevo);
 
         if (pinActualizado != null && pinActualizado.equals(pinNuevo)) {
-            usuario[3] = pinNuevo;
+            usuario[4] = pinNuevo;
             JOptionPane.showMessageDialog(null, "PIN cambiado exitosamente.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
             new FrmInterfazPrincipal().setVisible(true);
             dispose();

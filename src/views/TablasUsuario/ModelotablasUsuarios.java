@@ -24,12 +24,20 @@ public class ModelotablasUsuarios extends AbstractTableModel {
 
     @Override
     public int getRowCount() {
-        return data.length;
+        if (data == null) {
+            return 0;
+        } else {
+            return data.length;
+        }
     }
 
     @Override
     public int getColumnCount() {
-        return data[0].length;
+        if (data == null) {
+            return 0;
+        } else {
+            return data[0].length;
+        }
     }
 
     @Override

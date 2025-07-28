@@ -19,14 +19,14 @@ public class Autenticacion {
 
     // Leer archivos
     private String path = "data";
+    //Registrar usuarios 
+    private String file_name = "Usuarios.dat";
 
     public void save(String text, String name_file) throws IOException {
         FileWriter file = new FileWriter(path + File.separatorChar + name_file, true);
         file.write(text);
         file.close();
     }
-    //Registrar usuarios 
-    private String file_name = "Usuarios.dat";
 
     public boolean registrarUsuario(String cliente, String telefono, String cedula, String pin,
             String nroCuenta, String saldo) {
@@ -61,8 +61,6 @@ public class Autenticacion {
             file.close();
             br.close();
         }
-
-        System.out.println();
         return data;
     }
 
@@ -104,7 +102,7 @@ public class Autenticacion {
         Random r = new Random();
         long min = 1000000000L;
         long max = 10000000000L;
-        return  r.nextLong(min, max);
+        return r.nextLong(min, max);
     }
 
     public String[] autenticar(String nroCuentaIngresado, String pinIngresado) {
@@ -168,10 +166,10 @@ public class Autenticacion {
 
     public Boolean validarCedula(String cedula) {
         int suma = 0;
-        
+
         if (cedula.length() != 10) {
             return false;
-            
+
         } else {
             int a[] = new int[cedula.length() / 2];
             int b[] = new int[cedula.length() / 2];
@@ -204,11 +202,10 @@ public class Autenticacion {
             }
         }
     }
-    
+
     public boolean esSoloLetras(String texto) {
         return texto.matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+");
     }
-
 
     public boolean esSoloNumeros(String texto) {
         return texto.matches("\\d+");

@@ -74,7 +74,7 @@ public class FrmUsuario extends javax.swing.JDialog {
             limpiar();
             return;
         }
- 
+
         if (a.registrarUsuario(txtcliente.getText(), txttelefono.getText(), txtcedula.getText(), txtpin.getText(), txtnrocuentagenerado.getText(), txtsaldo.getText())) {
             JOptionPane.showMessageDialog(null, "Se ha registrado correctamente!", "Success", JOptionPane.INFORMATION_MESSAGE);
             limpiar();
