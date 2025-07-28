@@ -56,7 +56,12 @@ public class ModelotablasUsuarios extends AbstractTableModel {
             case 5:
                 return data[rowIndex][5];
             case 6:
-                return data[rowIndex][6];
+                String estado = data[rowIndex][6];
+                if (estado.equals("true")){
+                    return "Activo";
+                } else if (estado.equals("false")){
+                    return "Bloqueado";
+                }
             default:
                 return null;
         }
@@ -83,7 +88,6 @@ public class ModelotablasUsuarios extends AbstractTableModel {
                 return null;
         }
 
-        // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
 
 }
